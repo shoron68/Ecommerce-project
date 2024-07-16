@@ -17,7 +17,7 @@ const WhatShopexOffer = () => {
                 <div className="w-[20%] ">
                     <div className="bg-[#FFFFFF] drop-shadow-xl">
                     <div className="pt-[56px] px-[120px] pb-[27px] text-center">
-                        <img src={img1} alt="" />
+                        <img src={img1}  alt="" />
                     </div>
                     <div className="text-center">
                         <h4 className=' pb-[20px] text-[22px] text-[#151875] font-josefin font-semibold'>24/7 Support</h4>
@@ -28,7 +28,7 @@ const WhatShopexOffer = () => {
                 <div className="w-[20%] ">
                     <div className="bg-[#FFFFFF] drop-shadow-xl">
                     <div className="pt-[56px] px-[120px] pb-[27px] text-center">
-                        <img src={img2} alt="" />
+                        <img src={img2} className="" alt="" />
                     </div>
                     <div className="text-center">
                         <h4 className=' pb-[20px] text-[22px] text-[#151875] font-josefin font-semibold'>24/7 Support</h4>

@@ -25,7 +25,7 @@ const Header = () => {
                             <FiPhoneCall/>
                         </div>
                         <div className="">
-                            <p className='ml-[10px] text-[16px] text-[#f1f1f1] font-josefin font-semibold'>(12345)67890</p>
+                            <p className='ml-[10px] text-[16px] text-[#f1f1f1] font-josefin font-semibold'>01721862868</p>
                         </div>
                     </div>
                 </div>

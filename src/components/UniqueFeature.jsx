@@ -41,7 +41,7 @@ const UniqueFeature = () => {
             <div className="pt-[38px]">
               <div className="flex">
                 <div className="">
-                  <button className='px-[24px] py-[14px] bg-[#FB2E86] text-[#FFFFFF] font-josefin font-semibold text-[17px] rounded-[5px]'>Add To Cart</button>
+                  <button className='px-[24px] py-[14px] bg-[#FB2E86] border-[2px] border-[#FB2E86] hover:bg-[#fff] hover:text-[#FB2E86] text-[#FFFFFF] duration-300 font-josefin font-semibold text-[17px] rounded-[5px]'>Add To Cart</button>
                 </div>
                 <div className="pl-[19px]">
                   <h4 className='text-[14px] text-[#151875] font-josefin font-semibold'>B&B Italian Sofa </h4>

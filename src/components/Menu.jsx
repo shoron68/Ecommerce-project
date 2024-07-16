@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Container from './Container'
 import { FaSearch, FaBars } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
+import { Link } from 'react-router-dom';
 
 
 const Menu = () => {
@@ -15,8 +16,8 @@ const Menu = () => {
                     </div>
                     <div className="w-[65%]">
                         <ul className={`lg:flex items-center justify-center lg:static absolute -z-30  ${show == true ? 'top-[150px] left-[0px] bg-[#F5F5F3] z-50  w-full  duration-700 text-center' : ' duration-700 top-[-400px] left-[0px] text-center  w-full bg-[none] '}`}>
-                            <li className='text-[16px] text-[#0D0E43] font-lato font-normal'>Home</li>
-                            <li className='text-[16px] text-[#0D0E43] font-lato font-normal px-[17px]'>Pages</li>
+                            <li className='text-[16px] text-[#0D0E43] font-lato font-normal'><Link to="/">Home</Link></li>
+                            <li className='text-[16px] text-[#0D0E43] font-lato font-normal px-[17px]'><Link to="/pages">Pages</Link></li>
                             <li className='text-[16px] text-[#0D0E43] font-lato font-normal'>Products</li>
                             <li className='text-[16px] text-[#0D0E43] font-lato font-normal px-[17px]'>Blog </li>
                             <li className='text-[16px] text-[#0D0E43] font-lato font-normal'>Shop</li>

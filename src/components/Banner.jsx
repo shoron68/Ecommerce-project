@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick.css";
 
 const Banner = () => {
     const settings = {
-        dots: true,
+        dots: false,
         infinite: true,
         arrows:false,
         autoplay:true,
