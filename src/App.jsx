@@ -10,11 +10,16 @@ import OrderComplete from "./pages/OrderComplete"
 import HektoDemoPage from "./pages/HektoDemoPage"
 import MyAccount from "./pages/MyAccount"
 import Blog from "./pages/Blog"
+import SingleBlog from "./pages/SingleBlog"
+import About from "./pages/About"
+import Contact from "./pages/Contact"
+import Error from "./pages/Error"
+import Faq from "./pages/Faq"
 
 function App() {
   let router = createBrowserRouter(createRoutesFromElements(
 
-  <Route  element={<RootLayout/>}>
+  < Route  element={<RootLayout/>}>
     <Route index element={<Homee/>}></Route>
     <Route path="/pages" element={<Pages/>}></Route>
     <Route path="/shop-list" element={<ShopList/>}></Route>
@@ -24,6 +29,11 @@ function App() {
     <Route path="/hekto-demo" element={<HektoDemoPage/>}></Route>
     <Route path="/myAccount" element={<MyAccount/>}></Route>
     <Route path="/blog" element={<Blog/>}></Route>
+    <Route path="/single-blog" element={<SingleBlog/>}></Route>
+    <Route path="/about" element={<About/>}></Route>
+    <Route path="/contact" element={<Contact/>}></Route>
+    <Route path="/*" element={<Error/>}></Route>
+    <Route path="/faq" element={<Faq/>}></Route>
   </Route>
 
   ))
