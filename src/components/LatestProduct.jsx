@@ -58,18 +58,18 @@ const LatestProduct = () => {
             </div>
 
             <div className="">
-                <div class="">
-                    <ul class="flex flex-wrap justify-center -mb-px text-sm font-medium text-center" id="default-tab" data-tabs-toggle="#default-tab-content" role="tablist">
-                        <li class="me-2" role="presentation">
+                <div className="">
+                    <ul className="flex flex-wrap justify-center -mb-px text-sm font-medium text-center" id="default-tab" data-tabs-toggle="#default-tab-content" role="tablist">
+                        <li className="me-2" role="presentation">
                             <button className="inline-block  text-[18px] text-[#151875] font-lato font-normal" id="arrival-tab" data-tabs-target="#arrival" type="button" role="tab" aria-controls="arrival" aria-selected="false">New Arrival</button>
                         </li>
-                        <li class="me-2 px-[60px]" role="presentation">
+                        <li className="me-2 px-[60px]" role="presentation">
                             <button className="inline-block  text-[18px] text-[#151875] font-lato font-normal" id="seller-tab" data-tabs-target="#seller" type="button" role="tab" aria-controls="seller" aria-selected="false">Best Seller</button>
                         </li>
-                        <li class="me-2 pr-[60px]" role="presentation">
+                        <li className="me-2 pr-[60px]" role="presentation">
                             <button className="inline-block  text-[18px] text-[#151875] font-lato font-normal" id="featured-tab" data-tabs-target="#featured" type="button" role="tab" aria-controls="featured" aria-selected="false">Featured</button>
                         </li>
-                        <li class="me-2" role="presentation">
+                        <li className="me-2" role="presentation">
                             <button className="inline-block  text-[18px] text-[#151875] font-lato font-normal" id="offer-tab" data-tabs-target="#offer" type="button" role="tab" aria-controls="offer" aria-selected="false">Special Offer</button>
                         </li>
                         

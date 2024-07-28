@@ -1,23 +1,27 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Container from './Container'
-import chair from "../assets/chair.png"
 import { BsCart } from "react-icons/bs";
 import { CiHeart } from "react-icons/ci";
 import { MdOutlineZoomIn } from "react-icons/md";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { ApiData } from './apilinks/ContextApi';
 
 
 const FeatureProduct = () => {
+
+ let data=useContext(ApiData)
+
+
   const settings = {
     dots: true,
     infinite: true,
     arrows:false,
     autoplay:true,
-    speed: 1000,
+    speed: 3000,
     slidesToShow: 4,
-    slidesToScroll: 1,
+    slidesToScroll: 4,
 
 
     appendDots: dots => (
@@ -25,11 +29,11 @@ const FeatureProduct = () => {
         style={{
 
           borderRadius: "10px",
-          padding: "10px",
-          marginTop:"20px"
+          paddingTop: "0px",
+          marginTop:"0px"
         }}
       >
-        <ul style={{ margin: "0px" }}> {dots} </ul>
+        <ul style={{ marginTop: "0px" }}> {dots} </ul>
       </div>
     ),
     customPaging: i => (
@@ -49,25 +53,22 @@ const FeatureProduct = () => {
     
   };
 
-
-
-
-
-
-
-
   return (
     <Container className={`py-[128px]`}>
       <div className=" text-center pt-[129px]">
         <h2 className='text-[42px] text-[#1A0B5B] font-josefin font-bold'>Featured Products</h2>
       </div>
 
+
+
       <Slider {...settings}>
-        <div className=" flex w-[25%]  group">
+      
+      {data.map((item,i)=>(
+        <div key={i} className=" flex w-[25%]  group">
           <div className="drop-shadow-xl">
             <div className="w-[270px]  h-[361px] relative overflow-hidden">
               <div className=" pt-[46px] -z-10 pb-[12px] pl-[40px] pr-[52px] bg-[#F6F7FB]">
-                <img className='' src={chair} alt="" />
+                <img className='h-[200px]' src={item.thumbnail} alt="" />
               </div>
 
               <div className=" absolute opacity-0 bottom-[140px] duration-500 z-10  group-hover:opacity-100  right-[50%] translate-x-[50%] text-[12px] text-[#fff] font-josefin font-medium py-[8px] px-[13px] bg-[#08D15F] rounded-[3px]">
@@ -78,7 +79,7 @@ const FeatureProduct = () => {
 
               <div className="text-center z-50 bg-[#fff] group-hover:bg-[#2F1AC4] duration-500 ease-in-out pt-[15px] pb-[17px]">
 
-                <h4 className='text-[18px] text-[#FB2E86] font-josefin font-bold group-hover:text-[#fff] duration-500'>Cantilever chair</h4>
+                <h4 className='text-[18px] text-[#FB2E86] font-josefin font-bold group-hover:text-[#fff] duration-500'>{item.title}</h4>
                 <div className=" flex justify-center">
                   <div className="h-[5px] w-[16px] bg-[#05E6B7] rounded-[10px] "></div>
                   <div className="h-[5px] mx-[5px] w-[16px] bg-[#F701A8] rounded-[10px]"></div>
@@ -105,9 +106,12 @@ const FeatureProduct = () => {
           </div>
         </div>
 
+      ))}
+      
 
 
-        <div className=" flex w-[25%]  group">
+
+        {/* <div className=" flex w-[25%]  group">
           <div className="drop-shadow-xl">
             <div className="w-[270px]  h-[361px] relative overflow-hidden">
               <div className=" pt-[46px] -z-10 pb-[12px] pl-[40px] pr-[52px] bg-[#F6F7FB]">
@@ -235,7 +239,7 @@ const FeatureProduct = () => {
 
             </div>
           </div>
-        </div>
+        </div> */}
 
       </Slider>
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Container from './Container'
 import img from "../assets/treand.png"
 import img1 from "../assets/treand1.png"
@@ -8,8 +8,10 @@ import Tdroir from "../assets/Tdroir.png"
 import tchair1 from "../assets/tchair1.png"
 import tchair2 from "../assets/tchair2.png"
 import tchair3 from "../assets/tchair3.png"
+import { ApiData } from './apilinks/ContextApi'
 
 const TrendingProduct = () => {
+    let data =useContext(ApiData)
     return (
         <Container>
             <div className="text-center pt-[132px] pb-[39px]">
@@ -20,7 +22,9 @@ const TrendingProduct = () => {
             <div className="">
                 <div className="flex justify-between">
 
-                    <div className="w-[25%]">
+                    
+
+                    <div   className="w-[25%]">
                         <div className="h-[350px] w-[270px] bg-[#FFFFFF] drop-shadow-xl">
                             <div className="bg-[#F5F6F8] mx-auto w-[250px] h-[242px]">
                                 <img className='mx-auto pt-[41px]' src={img} alt="" />
@@ -35,6 +39,8 @@ const TrendingProduct = () => {
                             </div>
                         </div>
                     </div>
+                    
+
 
 
 

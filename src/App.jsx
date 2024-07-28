@@ -24,16 +24,17 @@ function App() {
     <Route path="/pages" element={<Pages/>}></Route>
     <Route path="/shop-list" element={<ShopList/>}></Route>
     <Route path="/product-details" element={<ProductDetails/>}></Route>
+    <Route path="/product-details/:id" element={<ProductDetails/>}></Route>
     <Route path="/shopping-cart" element={<ShoppingCart/>}></Route>
     <Route path="/order-complete" element={<OrderComplete/>}></Route>
-    <Route path="/hekto-demo" element={<HektoDemoPage/>}></Route>
+    <Route path="/checkout" element={<HektoDemoPage/>}></Route>
     <Route path="/myAccount" element={<MyAccount/>}></Route>
     <Route path="/blog" element={<Blog/>}></Route>
     <Route path="/single-blog" element={<SingleBlog/>}></Route>
     <Route path="/about" element={<About/>}></Route>
     <Route path="/contact" element={<Contact/>}></Route>
-    <Route path="/*" element={<Error/>}></Route>
     <Route path="/faq" element={<Faq/>}></Route>
+    <Route path="/*" element={<Error/>}></Route>
   </Route>
 
   ))

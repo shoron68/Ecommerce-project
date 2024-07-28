@@ -2,8 +2,28 @@ import React from 'react'
 import Container from './Container'
 import { FaCheckCircle } from "react-icons/fa";
 import { RxCrossCircled } from "react-icons/rx";
+import { useDispatch, useSelector } from 'react-redux';
+import { productRemove } from './slice/productSlice';
+import { Link } from 'react-router-dom';
+
 
 const Demo = () => {
+
+
+    
+        let dispatch =useDispatch()
+       
+
+         let data = useSelector((state)=>state.product.cartItem)
+      
+         const {totalPrice, totatQuntity} = data.reduce((acc , item)=>{
+             acc.totalPrice += item.price * item.qun
+             acc.totatQuntity += item.qun
+             return acc
+         },{totalPrice:0 , totatQuntity:0})
+        
+       
+        
     return (
         <>
             <div className=' bg-[#F6F5FF] py-[90px]'>
@@ -87,20 +107,34 @@ const Demo = () => {
                     <div className="w-[29%]">
                 
                             <div className=" flex justify-between items-center border-b-[1px] border-[#E1E1E4] py-[10px] mt-[15px]">
-                                <div className=" flex gap-x-[20px]">
-                                    <div className=" relative">
-                                        <img src="" className=' w-[83px] h-[87px]' alt="" />
-                                        <div  className=" absolute top-[-10px] right-[-10px]">
+                                <div className="">
+
+                                {data.map((item,i)=>(
+
+                                    <div key={i} className="flex justify-between items-center">
+                                        <div className="flex ">
+                                        <div className=" relative">
+                                        <img src={item.thumbnail} className=' w-[83px] h-[87px]' alt="" />
+                                        <div onClick={()=>dispatch(productRemove(i))}  className=" absolute top-[-10px] right-[-10px]">
                                             <RxCrossCircled className=' text-[25px] text-[#000000]' />
                                         </div>
                                     </div>
-                                    <div className="">
-                                        <h5 className=' font-josefin font-medium text-[16px] text-[#000000]'></h5>
+                                    <div className="ml-[20px]">
+                                        <h5 className=' font-josefin font-medium text-[16px] text-[#000000]'>{item.title}</h5>
                                         <h6 className=' font-josefin font-normal text-[14px] text-[#A1A8C1]'></h6>
                                         <p className=' font-josefin font-normal text-[14px] text-[#A1A8C1]'>Size: XL</p>
                                     </div>
+                                    </div>
+
+                                    <div className="ml-[140px]">
+                                    <h4 className=' font-josefin font-medium text-[16px] text-[#15245E]'>£{item.price}</h4>
+                                    </div>
+
+                                    </div>
+
+                                ))}
+
                                 </div>
-                                <h4 className=' font-josefin font-medium text-[16px] text-[#15245E]'>$</h4>
                             </div>
 
 
@@ -110,24 +144,26 @@ const Demo = () => {
                         <div className=" border-[1px] border-[#F4F4FC] bg-[#F4F4FC] px-[20px] py-[20px] rounded-[10px]">
                             <div className=" flex justify-between border-b-[1px] border-[#E8E6F1] py-3">
                                 <h3 className=' font-josefin font-medium text-[#1D3178] text-[16px]'>Subtotals:</h3>
-                                <h3 className=' font-josefin font-medium text-[#1D3178] text-[16px]'>£</h3>
+                                <h3 className=' font-josefin font-medium text-[#1D3178] text-[16px]'>£{totalPrice}</h3>
                             </div>
                             <div className=" flex justify-between border-b-[1px] border-[#E8E6F1] py-3 mt-[40px]">
                                 <h3 className=' font-josefin font-medium text-[#1D3178] text-[16px]'>Totals Quntity:</h3>
-                                <h3 className=' font-josefin font-medium text-[#1D3178] text-[16px]'>£</h3>
+                                <h3 className=' font-josefin font-medium text-[#1D3178] text-[16px]'>{totatQuntity}</h3>
                             </div>
                             <div className=" flex justify-between border-b-[1px] border-[#E8E6F1] py-3 mt-[40px]">
                                 <h3 className=' font-josefin font-medium text-[#1D3178] text-[16px]'>Totals:</h3>
-                                <h3 className=' font-josefin font-medium text-[#1D3178] text-[16px]'>£</h3>
+                                <h3 className=' font-josefin font-medium text-[#1D3178] text-[16px]'>£{totalPrice * totatQuntity}</h3>
                             </div>
                             <div className=" flex gap-x-[20px] items-center my-[30px]">
                                 <FaCheckCircle className=' text-[#19D16F] text-[18px]' />
                                 <p className=' font-josefin font-medium text-[#8A91AB] text-[12px]'>Shipping & taxes calculated at checkout</p>
                             </div>
-
+                                <Link to="/order-complete">
+                                
                             <button className=' border-[1px] py-[15px] bg-[#19D16F] w-full'>
                                 <a className=' font-josefin font-medium text-[#FFFFFF] text-[16px]'>Proceed To Checkout</a>
                             </button>
+                                </Link>
                         </div>
                     </div>
                 </div>

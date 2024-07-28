@@ -14,7 +14,7 @@ const SingleRelatedProduct = () => {
     return (
         <Container className='my-10'>
             <div className="">
-                <h2 className="font-jose font-bold text-[36px] text-[#101750]">Related Products</h2>
+                <h2 className="font-josefin font-bold text-[36px] text-[#101750]">Related Products</h2>
             </div>
             <div className="mt-10 flex justify-between">
 
@@ -40,8 +40,8 @@ const SingleRelatedProduct = () => {
                     </div>
                     <div className="flex justify-between items-baseline">
                         <div className="">
-                            <h4 className="font-jose font-semibold text-[16px] text-[#151875] my-[15px]">Mens Fashion Wear</h4>
-                            <p className="font-jose font-normal text-[13px] text-[#151875]">$43.00</p>
+                            <h4 className="font-josefin font-semibold text-[16px] text-[#151875] my-[15px]">Mens Fashion Wear</h4>
+                            <p className="font-josefin font-normal text-[13px] text-[#151875]">$43.00</p>
                         </div>
                         <span className="flex items-center">
                             <FaStar className="mx-[2px] text-[#FFCC2E]" />
@@ -74,8 +74,8 @@ const SingleRelatedProduct = () => {
                     </div>
                     <div className="flex justify-between items-baseline">
                         <div className="">
-                            <h4 className="font-jose font-semibold text-[16px] text-[#151875] my-[15px]">Women’s Fashion</h4>
-                            <p className="font-jose font-normal text-[13px] text-[#151875]">$67.00</p>
+                            <h4 className="font-josefin font-semibold text-[16px] text-[#151875] my-[15px]">Women’s Fashion</h4>
+                            <p className="font-josefin font-normal text-[13px] text-[#151875]">$67.00</p>
                         </div>
                         <span className="flex items-center">
                             <FaStar className="mx-[2px] text-[#FFCC2E]" />
@@ -108,8 +108,8 @@ const SingleRelatedProduct = () => {
                     </div>
                     <div className="flex justify-between items-baseline">
                         <div className="">
-                            <h4 className="font-jose font-semibold text-[16px] text-[#151875] my-[15px]">Wolx Dummy Fashion</h4>
-                            <p className="font-jose font-normal text-[13px] text-[#151875]">$67.00</p>
+                            <h4 className="font-josefin font-semibold text-[16px] text-[#151875] my-[15px]">Wolx Dummy Fashion</h4>
+                            <p className="font-josefin font-normal text-[13px] text-[#151875]">$67.00</p>
                         </div>
                         <span className="flex items-center">
                             <FaStar className="mx-[2px] text-[#FFCC2E]" />
@@ -142,8 +142,8 @@ const SingleRelatedProduct = () => {
                     </div>
                     <div className="flex justify-between items-baseline">
                         <div className="">
-                            <h4 className="font-jose font-semibold text-[16px] text-[#151875] my-[15px]">Top Wall Digital Clock</h4>
-                            <p className="font-jose font-normal text-[13px] text-[#151875]">$51.00</p>
+                            <h4 className="font-josefin font-semibold text-[16px] text-[#151875] my-[15px]">Top Wall Digital Clock</h4>
+                            <p className="font-josefin font-normal text-[13px] text-[#151875]">$51.00</p>
                         </div>
                         <span className="flex items-center">
                             <FaStar className="mx-[2px] text-[#FFCC2E]" />
