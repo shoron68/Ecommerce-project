@@ -5,6 +5,7 @@ import { FiPhoneCall,FiUser  } from "react-icons/fi";
 import { FaAngleDown } from "react-icons/fa6";
 import { FaRegHeart } from "react-icons/fa";
 import { BsCart } from "react-icons/bs";
+import { Link } from 'react-router-dom';
 
 
 
@@ -46,19 +47,25 @@ const Header = () => {
                             <FaAngleDown/>
                         </div>
 
-                        <div className="flex items-center text-[16px] text-[#f1f1f1] font-josefin font-semibold ">
-                            <span className='pr-[5px]'>Login</span>
-                            <FiUser/>
-                        </div>
+                            <Link to="/myaccount">
+                            <div className=" flex items-center">
+                            <span className='pr-[5px] text-[16px] text-[#f1f1f1] font-josefin font-semibold'>Login</span>
+                            <FiUser className='text-[#F1F1F1]'/>
+                            </div>
+                            </Link>
+
 
                         <div className=" px-[17px] flex items-center text-[16px] text-[#f1f1f1] font-josefin font-semibold ">
                             <span className='pr-[5px]'>Wishlist</span>
                             <FaRegHeart/>
                         </div>
 
+                            <Link to="/shopping-cart">
+                            
                         <div className="items-center text-[16px] text-[#f1f1f1] font-josefin font-semibold ">
                             <BsCart/>
                         </div>
+                            </Link>
                         
                      </div>
                 </div>

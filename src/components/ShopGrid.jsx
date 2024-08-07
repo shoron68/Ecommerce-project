@@ -7,6 +7,7 @@ import { useState } from "react";
 import { ApiData } from './apilinks/ContextApi';
 import Postt from './pagination/Postt';
 import PaginationArea from './pagination/PaginationArea';
+import { Link } from 'react-router-dom';
 
 const ShopGrid = () => {  
     let [categoryFilter, setCategoryFilter] = useState([])
@@ -49,7 +50,6 @@ const ShopGrid = () => {
   useEffect(()=>{
     setCategory([...new Set(data.map((item)=>item.category))])
   },[data])
-  console.log(category);
 
     return (
         <div className="">
@@ -87,13 +87,12 @@ const ShopGrid = () => {
                             </div>
                             <div className="flex items-center">
                                 <p className="font-lato font-normal text-[16px] text-[#3F509E] pr-2">View:</p>
-                                <FaList className="text-[#151875] mr-2" />
+                                <Link to="/shop-list"> <FaList className="text-[#151875] mr-2" /></Link>
                                 <IoGridSharp className="text-[#151875] active:bg-black" />
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <div className="flex justify-between">
                     <div className="w-[20%]">
                         <div className="">
@@ -157,25 +156,10 @@ const ShopGrid = () => {
                                 </li>
                             </ul>
                         </div>
-
-
-
-
-
                         <div className="my-8">
                             <h4 className="font-josefin font-bold text-[20px] text-[#151875] underline decoration-[#000] decoration-2 underline-offset-[5px]">Categories</h4>
-                            
-                                <li className="font-lato font-normal text-[16px] text-[#7E81A2] my-2">{category}</li>
-                                
-                            
+                                <li className="font-lato font-normal text-[16px] text-[#7E81A2] my-2">{category}</li> 
                         </div>
-
-
-
-
-
-
-
 
                         <div className="">
                             <h4 className="font-jose font-bold text-[20px] text-[#151875] underline decoration-[#000] decoration-2 underline-offset-[5px]">Price Filter</h4>

@@ -24,12 +24,11 @@ const AboutMain = () => {
 <div className=' py-[50px]'>
         <Container>
           <div className=" flex justify-between items-center">
-            <div className="w-[50%]">
-              <div className="bg-[#2B3CAB] w-[555px] h-[390px] rounded-[7px] relative group">
-                <div className=" w-[555px] h-[390px] absolute group-hover:top-[-20px] group-hover:right-[-20px] duration-300">
+            <div className="w-[50%] relative">
+              <div className="bg-[#2B3CAB] w-[555px] h-[390px] rounded-[7px]"> </div>
+              <div className=" w-[555px] h-[390px] absolute top-0 left-0 hover:top-[-20px] hover:left-[20px] duration-300">
                 <img src={aboutimg} alt="" />
                 </div>
-              </div>
             </div>
             <div className="w-[50%]">
               <div className=" py-[30px]">

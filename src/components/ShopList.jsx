@@ -1,16 +1,52 @@
 import Container from './Container'
-import React from 'react'
+import React, { useContext } from 'react'
 import { GoDotFill } from "react-icons/go";
 import { FaStar, FaList } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import shop from "../assets/shopimg1.png"
-import { IoCartOutline, IoGridSharp } from "react-icons/io5";
-import { FaSearchPlus } from "react-icons/fa";
+import {  IoGridSharp } from "react-icons/io5";
 import { useState } from "react";
-import { IoMdHeartEmpty } from "react-icons/io";
+import { ApiData } from './apilinks/ContextApi';
+import { Link } from 'react-router-dom';
+import PostList from './pagination/PostList';
+import PaginationArea from './pagination/PaginationArea';
 
 const ShopList = () => {
-    let [activeIcon, setActiveIcon] = useState('')
+    let [categoryFilter, setCategoryFilter] = useState([])
+    let data = useContext(ApiData)
+    let [pageStart,setPageStart] =useState(1)
+    let [perPage,setPerPage] =useState(6)
+    let lastpage = pageStart * perPage
+    let fastpage = lastpage - perPage
+    let Allpage = data.slice(fastpage , lastpage )
+
+
+    
+    let pageNumber = []
+  for(let i = 0; i < Math.ceil(categoryFilter.length > 0 ? categoryFilter :data.length / perPage); i++){
+    pageNumber.push(i)
+}
+
+  let paginate = (pageNumber) => {
+
+    setPageStart(pageNumber + 1)
+  }
+
+  let next = () => {
+
+    if (pageStart < pageNumber.length) {
+      setPageStart((state) => state + 1)
+    }
+
+  }
+  
+  let prev = () => {
+
+    if (pageStart > 1) {
+      setPageStart((state) => state - 1)
+    }
+
+  }
+
+  
   return (
     <div className="">
             <div className="bg-[#F6F5FF] pt-[96px] pb-[126px]">
@@ -48,7 +84,7 @@ const ShopList = () => {
                             <div className="flex items-center">
                                 <p className="font-lato font-normal text-[16px] text-[#3F509E] pr-2">View:</p>
                                 <FaList className="text-[#151875] mr-2" />
-                                <IoGridSharp className="text-[#151875] active:bg-black" />
+                                <Link to="/pages"><IoGridSharp className="text-[#151875] active:bg-black" /></Link>
                             </div>
                         </div>
                     </div>
@@ -67,6 +103,8 @@ const ShopList = () => {
                                 <li className="font-lato font-normal text-[16px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#E5E0FC] bg-[#E5E0FC] checked:bg-[#603EFF]" />Green DIY furniture</li>
                             </ul>
                         </div>
+
+
                         <div className="my-8">
                             <h4 className="font-jose font-bold text-[20px] text-[#151875] underline decoration-[#000] decoration-2 underline-offset-[5px]">Discount Offer</h4>
                             <ul>
@@ -173,457 +211,13 @@ const ShopList = () => {
 
 
 
-                    <div className="w-[75%] flex flex-wrap justify-between items-center">
-                        <div className="group my-[15px]">
-                            <div className="relative p-[35px] bg-[#F6F7FB] group-hover:bg-[#EBF4F3] ease-in-out duration-500">
-                                <Link to='/Product-Details'><img src={shop} alt="" className="h-[200px] w-[200px]" /></Link>
-                                <div className="">
-                                    <div className="absolute bottom-[-10px] left-[20px] opacity-0 group-hover:overflow-hidden group-hover:bottom-[30px] group-hover:opacity-100 ease-in-out duration-700">
-                                        <div onClick={() => setActiveIcon('IoCartOutline')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'IoCartOutline' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'IoCartOutline'}>
-                                            <IoCartOutline />
-                                        </div>
-                                        <div onClick={() => setActiveIcon('FaHeart')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'FaHeart' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'FaHeart'}>
-                                            <IoMdHeartEmpty />
-                                        </div>
-                                        <div onClick={() => setActiveIcon('FaSearchPlus')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'FaSearchPlus' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'FaSearchPlus'}>
-                                            <FaSearchPlus />
-                                        </div>
-                                    </div >
-                                </div>
-                            </div>
-                            <div className="text-center mt-[18px]">
-                                <h5 className="font-jose font-bold text-[18px] text-[#151875]">Vel elit euismod</h5>
-                                <div className="flex justify-center items-center">
-                                    <GoDotFill className="text-[#DE9034]" />
-                                    <GoDotFill className="text-[#EC42A2]" />
-                                    <GoDotFill className="text-[#8568FF]" />
-                                </div>
-                                <div className="flex items-center justify-center">
-                                    <p className="font-jose font-normal text-[14px] text-[#151875] pr-3">$26.00 </p>
-                                    <p className="font-jose font-normal text-[14px] text-[#FB2448] line-through">$42.00</p>
-                                </div>
-                            </div>
+                    <div className="w-[75%]">
+                    
+                   <PostList Allpage={Allpage}/>
+                   <div className="text-center pt-[50px]">
+                        <PaginationArea pageNumber={pageNumber} paginate={paginate} pageStart={pageStart} next={next} prev={prev}/>
                         </div>
-                        <div className="group my-[15px]">
-                            <div className="relative p-[35px] bg-[#F6F7FB] group-hover:bg-[#EBF4F3] ease-in-out duration-500">
-                                <Link to='/Product-Details'><img src={shop} alt="" className="h-[200px] w-[200px]" /></Link>
-                                <div className="">
-                                    <div className="absolute bottom-[-10px] left-[20px] opacity-0 group-hover:overflow-hidden group-hover:bottom-[30px] group-hover:opacity-100 ease-in-out duration-700">
-                                        <div onClick={() => setActiveIcon('IoCartOutline')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'IoCartOutline' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'IoCartOutline'}>
-                                            <IoCartOutline />
-                                        </div>
-                                        <div onClick={() => setActiveIcon('FaHeart')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'FaHeart' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'FaHeart'}>
-                                            <IoMdHeartEmpty />
-                                        </div>
-                                        <div onClick={() => setActiveIcon('FaSearchPlus')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'FaSearchPlus' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'FaSearchPlus'}>
-                                            <FaSearchPlus />
-                                        </div>
-                                    </div >
-                                </div>
-                            </div>
-                            <div className="text-center mt-[18px]">
-                                <h5 className="font-jose font-bold text-[18px] text-[#151875]">Vel elit euismod</h5>
-                                <div className="flex justify-center items-center">
-                                    <GoDotFill className="text-[#DE9034]" />
-                                    <GoDotFill className="text-[#EC42A2]" />
-                                    <GoDotFill className="text-[#8568FF]" />
-                                </div>
-                                <div className="flex items-center justify-center">
-                                    <p className="font-jose font-normal text-[14px] text-[#151875] pr-3">$26.00 </p>
-                                    <p className="font-jose font-normal text-[14px] text-[#FB2448] line-through">$42.00</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="group my-[15px]">
-                            <div className="relative p-[35px] bg-[#F6F7FB] group-hover:bg-[#EBF4F3] ease-in-out duration-500">
-                                <Link to='/Product-Details'><img src={shop} alt="" className="h-[200px] w-[200px]" /></Link>
-                                <div className="">
-                                    <div className="absolute bottom-[-10px] left-[20px] opacity-0 group-hover:overflow-hidden group-hover:bottom-[30px] group-hover:opacity-100 ease-in-out duration-700">
-                                        <div onClick={() => setActiveIcon('IoCartOutline')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'IoCartOutline' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'IoCartOutline'}>
-                                            <IoCartOutline />
-                                        </div>
-                                        <div onClick={() => setActiveIcon('FaHeart')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'FaHeart' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'FaHeart'}>
-                                            <IoMdHeartEmpty />
-                                        </div>
-                                        <div onClick={() => setActiveIcon('FaSearchPlus')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'FaSearchPlus' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'FaSearchPlus'}>
-                                            <FaSearchPlus />
-                                        </div>
-                                    </div >
-                                </div>
-                            </div>
-                            <div className="text-center mt-[18px]">
-                                <h5 className="font-jose font-bold text-[18px] text-[#151875]">Vel elit euismod</h5>
-                                <div className="flex justify-center items-center">
-                                    <GoDotFill className="text-[#DE9034]" />
-                                    <GoDotFill className="text-[#EC42A2]" />
-                                    <GoDotFill className="text-[#8568FF]" />
-                                </div>
-                                <div className="flex items-center justify-center">
-                                    <p className="font-jose font-normal text-[14px] text-[#151875] pr-3">$26.00 </p>
-                                    <p className="font-jose font-normal text-[14px] text-[#FB2448] line-through">$42.00</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="group my-[15px]">
-                            <div className="relative p-[35px] bg-[#F6F7FB] group-hover:bg-[#EBF4F3] ease-in-out duration-500">
-                                <Link to='/Product-Details'><img src={shop} alt="" className="h-[200px] w-[200px]" /></Link>
-                                <div className="">
-                                    <div className="absolute bottom-[-10px] left-[20px] opacity-0 group-hover:overflow-hidden group-hover:bottom-[30px] group-hover:opacity-100 ease-in-out duration-700">
-                                        <div onClick={() => setActiveIcon('IoCartOutline')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'IoCartOutline' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'IoCartOutline'}>
-                                            <IoCartOutline />
-                                        </div>
-                                        <div onClick={() => setActiveIcon('FaHeart')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'FaHeart' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'FaHeart'}>
-                                            <IoMdHeartEmpty />
-                                        </div>
-                                        <div onClick={() => setActiveIcon('FaSearchPlus')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'FaSearchPlus' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'FaSearchPlus'}>
-                                            <FaSearchPlus />
-                                        </div>
-                                    </div >
-                                </div>
-                            </div>
-                            <div className="text-center mt-[18px]">
-                                <h5 className="font-jose font-bold text-[18px] text-[#151875]">Vel elit euismod</h5>
-                                <div className="flex justify-center items-center">
-                                    <GoDotFill className="text-[#DE9034]" />
-                                    <GoDotFill className="text-[#EC42A2]" />
-                                    <GoDotFill className="text-[#8568FF]" />
-                                </div>
-                                <div className="flex items-center justify-center">
-                                    <p className="font-jose font-normal text-[14px] text-[#151875] pr-3">$26.00 </p>
-                                    <p className="font-jose font-normal text-[14px] text-[#FB2448] line-through">$42.00</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="group my-[15px]">
-                            <div className="relative p-[35px] bg-[#F6F7FB] group-hover:bg-[#EBF4F3] ease-in-out duration-500">
-                                <Link to='/Product-Details'><img src={shop} alt="" className="h-[200px] w-[200px]" /></Link>
-                                <div className="">
-                                    <div className="absolute bottom-[-10px] left-[20px] opacity-0 group-hover:overflow-hidden group-hover:bottom-[30px] group-hover:opacity-100 ease-in-out duration-700">
-                                        <div onClick={() => setActiveIcon('IoCartOutline')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'IoCartOutline' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'IoCartOutline'}>
-                                            <IoCartOutline />
-                                        </div>
-                                        <div onClick={() => setActiveIcon('FaHeart')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'FaHeart' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'FaHeart'}>
-                                            <IoMdHeartEmpty />
-                                        </div>
-                                        <div onClick={() => setActiveIcon('FaSearchPlus')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'FaSearchPlus' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'FaSearchPlus'}>
-                                            <FaSearchPlus />
-                                        </div>
-                                    </div >
-                                </div>
-                            </div>
-                            <div className="text-center mt-[18px]">
-                                <h5 className="font-jose font-bold text-[18px] text-[#151875]">Vel elit euismod</h5>
-                                <div className="flex justify-center items-center">
-                                    <GoDotFill className="text-[#DE9034]" />
-                                    <GoDotFill className="text-[#EC42A2]" />
-                                    <GoDotFill className="text-[#8568FF]" />
-                                </div>
-                                <div className="flex items-center justify-center">
-                                    <p className="font-jose font-normal text-[14px] text-[#151875] pr-3">$26.00 </p>
-                                    <p className="font-jose font-normal text-[14px] text-[#FB2448] line-through">$42.00</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="group my-[15px]">
-                            <div className="relative p-[35px] bg-[#F6F7FB] group-hover:bg-[#EBF4F3] ease-in-out duration-500">
-                                <Link to='/Product-Details'><img src={shop} alt="" className="h-[200px] w-[200px]" /></Link>
-                                <div className="">
-                                    <div className="absolute bottom-[-10px] left-[20px] opacity-0 group-hover:overflow-hidden group-hover:bottom-[30px] group-hover:opacity-100 ease-in-out duration-700">
-                                        <div onClick={() => setActiveIcon('IoCartOutline')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'IoCartOutline' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'IoCartOutline'}>
-                                            <IoCartOutline />
-                                        </div>
-                                        <div onClick={() => setActiveIcon('FaHeart')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'FaHeart' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'FaHeart'}>
-                                            <IoMdHeartEmpty />
-                                        </div>
-                                        <div onClick={() => setActiveIcon('FaSearchPlus')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'FaSearchPlus' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'FaSearchPlus'}>
-                                            <FaSearchPlus />
-                                        </div>
-                                    </div >
-                                </div>
-                            </div>
-                            <div className="text-center mt-[18px]">
-                                <h5 className="font-jose font-bold text-[18px] text-[#151875]">Vel elit euismod</h5>
-                                <div className="flex justify-center items-center">
-                                    <GoDotFill className="text-[#DE9034]" />
-                                    <GoDotFill className="text-[#EC42A2]" />
-                                    <GoDotFill className="text-[#8568FF]" />
-                                </div>
-                                <div className="flex items-center justify-center">
-                                    <p className="font-jose font-normal text-[14px] text-[#151875] pr-3">$26.00 </p>
-                                    <p className="font-jose font-normal text-[14px] text-[#FB2448] line-through">$42.00</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="group my-[15px]">
-                            <div className="relative p-[35px] bg-[#F6F7FB] group-hover:bg-[#EBF4F3] ease-in-out duration-500">
-                                <Link to='/Product-Details'><img src={shop} alt="" className="h-[200px] w-[200px]" /></Link>
-                                <div className="">
-                                    <div className="absolute bottom-[-10px] left-[20px] opacity-0 group-hover:overflow-hidden group-hover:bottom-[30px] group-hover:opacity-100 ease-in-out duration-700">
-                                        <div onClick={() => setActiveIcon('IoCartOutline')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'IoCartOutline' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'IoCartOutline'}>
-                                            <IoCartOutline />
-                                        </div>
-                                        <div onClick={() => setActiveIcon('FaHeart')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'FaHeart' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'FaHeart'}>
-                                            <IoMdHeartEmpty />
-                                        </div>
-                                        <div onClick={() => setActiveIcon('FaSearchPlus')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'FaSearchPlus' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'FaSearchPlus'}>
-                                            <FaSearchPlus />
-                                        </div>
-                                    </div >
-                                </div>
-                            </div>
-                            <div className="text-center mt-[18px]">
-                                <h5 className="font-jose font-bold text-[18px] text-[#151875]">Vel elit euismod</h5>
-                                <div className="flex justify-center items-center">
-                                    <GoDotFill className="text-[#DE9034]" />
-                                    <GoDotFill className="text-[#EC42A2]" />
-                                    <GoDotFill className="text-[#8568FF]" />
-                                </div>
-                                <div className="flex items-center justify-center">
-                                    <p className="font-jose font-normal text-[14px] text-[#151875] pr-3">$26.00 </p>
-                                    <p className="font-jose font-normal text-[14px] text-[#FB2448] line-through">$42.00</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="group my-[15px]">
-                            <div className="relative p-[35px] bg-[#F6F7FB] group-hover:bg-[#EBF4F3] ease-in-out duration-500">
-                                <Link to='/Product-Details'><img src={shop} alt="" className="h-[200px] w-[200px]" /></Link>
-                                <div className="">
-                                    <div className="absolute bottom-[-10px] left-[20px] opacity-0 group-hover:overflow-hidden group-hover:bottom-[30px] group-hover:opacity-100 ease-in-out duration-700">
-                                        <div onClick={() => setActiveIcon('IoCartOutline')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'IoCartOutline' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'IoCartOutline'}>
-                                            <IoCartOutline />
-                                        </div>
-                                        <div onClick={() => setActiveIcon('FaHeart')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'FaHeart' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'FaHeart'}>
-                                            <IoMdHeartEmpty />
-                                        </div>
-                                        <div onClick={() => setActiveIcon('FaSearchPlus')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'FaSearchPlus' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'FaSearchPlus'}>
-                                            <FaSearchPlus />
-                                        </div>
-                                    </div >
-                                </div>
-                            </div>
-                            <div className="text-center mt-[18px]">
-                                <h5 className="font-jose font-bold text-[18px] text-[#151875]">Vel elit euismod</h5>
-                                <div className="flex justify-center items-center">
-                                    <GoDotFill className="text-[#DE9034]" />
-                                    <GoDotFill className="text-[#EC42A2]" />
-                                    <GoDotFill className="text-[#8568FF]" />
-                                </div>
-                                <div className="flex items-center justify-center">
-                                    <p className="font-jose font-normal text-[14px] text-[#151875] pr-3">$26.00 </p>
-                                    <p className="font-jose font-normal text-[14px] text-[#FB2448] line-through">$42.00</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="group my-[15px]">
-                            <div className="relative p-[35px] bg-[#F6F7FB] group-hover:bg-[#EBF4F3] ease-in-out duration-500">
-                                <Link to='/Product-Details'><img src={shop} alt="" className="h-[200px] w-[200px]" /></Link>
-                                <div className="">
-                                    <div className="absolute bottom-[-10px] left-[20px] opacity-0 group-hover:overflow-hidden group-hover:bottom-[30px] group-hover:opacity-100 ease-in-out duration-700">
-                                        <div onClick={() => setActiveIcon('IoCartOutline')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'IoCartOutline' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'IoCartOutline'}>
-                                            <IoCartOutline />
-                                        </div>
-                                        <div onClick={() => setActiveIcon('FaHeart')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'FaHeart' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'FaHeart'}>
-                                            <IoMdHeartEmpty />
-                                        </div>
-                                        <div onClick={() => setActiveIcon('FaSearchPlus')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'FaSearchPlus' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'FaSearchPlus'}>
-                                            <FaSearchPlus />
-                                        </div>
-                                    </div >
-                                </div>
-                            </div>
-                            <div className="text-center mt-[18px]">
-                                <h5 className="font-jose font-bold text-[18px] text-[#151875]">Vel elit euismod</h5>
-                                <div className="flex justify-center items-center">
-                                    <GoDotFill className="text-[#DE9034]" />
-                                    <GoDotFill className="text-[#EC42A2]" />
-                                    <GoDotFill className="text-[#8568FF]" />
-                                </div>
-                                <div className="flex items-center justify-center">
-                                    <p className="font-jose font-normal text-[14px] text-[#151875] pr-3">$26.00 </p>
-                                    <p className="font-jose font-normal text-[14px] text-[#FB2448] line-through">$42.00</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="group my-[15px]">
-                            <div className="relative p-[35px] bg-[#F6F7FB] group-hover:bg-[#EBF4F3] ease-in-out duration-500">
-                                <Link to='/Product-Details'><img src={shop} alt="" className="h-[200px] w-[200px]" /></Link>
-                                <div className="">
-                                    <div className="absolute bottom-[-10px] left-[20px] opacity-0 group-hover:overflow-hidden group-hover:bottom-[30px] group-hover:opacity-100 ease-in-out duration-700">
-                                        <div onClick={() => setActiveIcon('IoCartOutline')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'IoCartOutline' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'IoCartOutline'}>
-                                            <IoCartOutline />
-                                        </div>
-                                        <div onClick={() => setActiveIcon('FaHeart')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'FaHeart' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'FaHeart'}>
-                                            <IoMdHeartEmpty />
-                                        </div>
-                                        <div onClick={() => setActiveIcon('FaSearchPlus')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'FaSearchPlus' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'FaSearchPlus'}>
-                                            <FaSearchPlus />
-                                        </div>
-                                    </div >
-                                </div>
-                            </div>
-                            <div className="text-center mt-[18px]">
-                                <h5 className="font-jose font-bold text-[18px] text-[#151875]">Vel elit euismod</h5>
-                                <div className="flex justify-center items-center">
-                                    <GoDotFill className="text-[#DE9034]" />
-                                    <GoDotFill className="text-[#EC42A2]" />
-                                    <GoDotFill className="text-[#8568FF]" />
-                                </div>
-                                <div className="flex items-center justify-center">
-                                    <p className="font-jose font-normal text-[14px] text-[#151875] pr-3">$26.00 </p>
-                                    <p className="font-jose font-normal text-[14px] text-[#FB2448] line-through">$42.00</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="group my-[15px]">
-                            <div className="relative p-[35px] bg-[#F6F7FB] group-hover:bg-[#EBF4F3] ease-in-out duration-500">
-                                <Link to='/Product-Details'><img src={shop} alt="" className="h-[200px] w-[200px]" /></Link>
-                                <div className="">
-                                    <div className="absolute bottom-[-10px] left-[20px] opacity-0 group-hover:overflow-hidden group-hover:bottom-[30px] group-hover:opacity-100 ease-in-out duration-700">
-                                        <div onClick={() => setActiveIcon('IoCartOutline')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'IoCartOutline' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'IoCartOutline'}>
-                                            <IoCartOutline />
-                                        </div>
-                                        <div onClick={() => setActiveIcon('FaHeart')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'FaHeart' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'FaHeart'}>
-                                            <IoMdHeartEmpty />
-                                        </div>
-                                        <div onClick={() => setActiveIcon('FaSearchPlus')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'FaSearchPlus' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'FaSearchPlus'}>
-                                            <FaSearchPlus />
-                                        </div>
-                                    </div >
-                                </div>
-                            </div>
-                            <div className="text-center mt-[18px]">
-                                <h5 className="font-jose font-bold text-[18px] text-[#151875]">Vel elit euismod</h5>
-                                <div className="flex justify-center items-center">
-                                    <GoDotFill className="text-[#DE9034]" />
-                                    <GoDotFill className="text-[#EC42A2]" />
-                                    <GoDotFill className="text-[#8568FF]" />
-                                </div>
-                                <div className="flex items-center justify-center">
-                                    <p className="font-jose font-normal text-[14px] text-[#151875] pr-3">$26.00 </p>
-                                    <p className="font-jose font-normal text-[14px] text-[#FB2448] line-through">$42.00</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="group my-[15px]">
-                            <div className="relative p-[35px] bg-[#F6F7FB] group-hover:bg-[#EBF4F3] ease-in-out duration-500">
-                                <Link to='/Product-Details'><img src={shop} alt="" className="h-[200px] w-[200px]" /></Link>
-                                <div className="">
-                                    <div className="absolute bottom-[-10px] left-[20px] opacity-0 group-hover:overflow-hidden group-hover:bottom-[30px] group-hover:opacity-100 ease-in-out duration-700">
-                                        <div onClick={() => setActiveIcon('IoCartOutline')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'IoCartOutline' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'IoCartOutline'}>
-                                            <IoCartOutline />
-                                        </div>
-                                        <div onClick={() => setActiveIcon('FaHeart')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'FaHeart' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'FaHeart'}>
-                                            <IoMdHeartEmpty />
-                                        </div>
-                                        <div onClick={() => setActiveIcon('FaSearchPlus')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'FaSearchPlus' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'FaSearchPlus'}>
-                                            <FaSearchPlus />
-                                        </div>
-                                    </div >
-                                </div>
-                            </div>
-                            <div className="text-center mt-[18px]">
-                                <h5 className="font-jose font-bold text-[18px] text-[#151875]">Vel elit euismod</h5>
-                                <div className="flex justify-center items-center">
-                                    <GoDotFill className="text-[#DE9034]" />
-                                    <GoDotFill className="text-[#EC42A2]" />
-                                    <GoDotFill className="text-[#8568FF]" />
-                                </div>
-                                <div className="flex items-center justify-center">
-                                    <p className="font-jose font-normal text-[14px] text-[#151875] pr-3">$26.00 </p>
-                                    <p className="font-jose font-normal text-[14px] text-[#FB2448] line-through">$42.00</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="group my-[15px]">
-                            <div className="relative p-[35px] bg-[#F6F7FB] group-hover:bg-[#EBF4F3] ease-in-out duration-500">
-                                <Link to='/Product-Details'><img src={shop} alt="" className="h-[200px] w-[200px]" /></Link>
-                                <div className="">
-                                    <div className="absolute bottom-[-10px] left-[20px] opacity-0 group-hover:overflow-hidden group-hover:bottom-[30px] group-hover:opacity-100 ease-in-out duration-700">
-                                        <div onClick={() => setActiveIcon('IoCartOutline')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'IoCartOutline' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'IoCartOutline'}>
-                                            <IoCartOutline />
-                                        </div>
-                                        <div onClick={() => setActiveIcon('FaHeart')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'FaHeart' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'FaHeart'}>
-                                            <IoMdHeartEmpty />
-                                        </div>
-                                        <div onClick={() => setActiveIcon('FaSearchPlus')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'FaSearchPlus' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'FaSearchPlus'}>
-                                            <FaSearchPlus />
-                                        </div>
-                                    </div >
-                                </div>
-                            </div>
-                            <div className="text-center mt-[18px]">
-                                <h5 className="font-jose font-bold text-[18px] text-[#151875]">Vel elit euismod</h5>
-                                <div className="flex justify-center items-center">
-                                    <GoDotFill className="text-[#DE9034]" />
-                                    <GoDotFill className="text-[#EC42A2]" />
-                                    <GoDotFill className="text-[#8568FF]" />
-                                </div>
-                                <div className="flex items-center justify-center">
-                                    <p className="font-jose font-normal text-[14px] text-[#151875] pr-3">$26.00 </p>
-                                    <p className="font-jose font-normal text-[14px] text-[#FB2448] line-through">$42.00</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="group my-[15px]">
-                            <div className="relative p-[35px] bg-[#F6F7FB] group-hover:bg-[#EBF4F3] ease-in-out duration-500">
-                                <Link to='/Product-Details'><img src={shop} alt="" className="h-[200px] w-[200px]" /></Link>
-                                <div className="">
-                                    <div className="absolute bottom-[-10px] left-[20px] opacity-0 group-hover:overflow-hidden group-hover:bottom-[30px] group-hover:opacity-100 ease-in-out duration-700">
-                                        <div onClick={() => setActiveIcon('IoCartOutline')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'IoCartOutline' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'IoCartOutline'}>
-                                            <IoCartOutline />
-                                        </div>
-                                        <div onClick={() => setActiveIcon('FaHeart')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'FaHeart' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'FaHeart'}>
-                                            <IoMdHeartEmpty />
-                                        </div>
-                                        <div onClick={() => setActiveIcon('FaSearchPlus')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'FaSearchPlus' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'FaSearchPlus'}>
-                                            <FaSearchPlus />
-                                        </div>
-                                    </div >
-                                </div>
-                            </div>
-                            <div className="text-center mt-[18px]">
-                                <h5 className="font-jose font-bold text-[18px] text-[#151875]">Vel elit euismod</h5>
-                                <div className="flex justify-center items-center">
-                                    <GoDotFill className="text-[#DE9034]" />
-                                    <GoDotFill className="text-[#EC42A2]" />
-                                    <GoDotFill className="text-[#8568FF]" />
-                                </div>
-                                <div className="flex items-center justify-center">
-                                    <p className="font-jose font-normal text-[14px] text-[#151875] pr-3">$26.00 </p>
-                                    <p className="font-jose font-normal text-[14px] text-[#FB2448] line-through">$42.00</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="group my-[15px]">
-                            <div className="relative p-[35px] bg-[#F6F7FB] group-hover:bg-[#EBF4F3] ease-in-out duration-500">
-                                <Link to='/Product-Details'><img src={shop} alt="" className="h-[200px] w-[200px]" /></Link>
-                                <div className="">
-                                    <div className="absolute bottom-[-10px] left-[20px] opacity-0 group-hover:overflow-hidden group-hover:bottom-[30px] group-hover:opacity-100 ease-in-out duration-700">
-                                        <div onClick={() => setActiveIcon('IoCartOutline')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'IoCartOutline' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'IoCartOutline'}>
-                                            <IoCartOutline />
-                                        </div>
-                                        <div onClick={() => setActiveIcon('FaHeart')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'FaHeart' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'FaHeart'}>
-                                            <IoMdHeartEmpty />
-                                        </div>
-                                        <div onClick={() => setActiveIcon('FaSearchPlus')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'FaSearchPlus' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'FaSearchPlus'}>
-                                            <FaSearchPlus />
-                                        </div>
-                                    </div >
-                                </div>
-                            </div>
-                            <div className="text-center mt-[18px]">
-                                <h5 className="font-jose font-bold text-[18px] text-[#151875]">Vel elit euismod</h5>
-                                <div className="flex justify-center items-center">
-                                    <GoDotFill className="text-[#DE9034]" />
-                                    <GoDotFill className="text-[#EC42A2]" />
-                                    <GoDotFill className="text-[#8568FF]" />
-                                </div>
-                                <div className="flex items-center justify-center">
-                                    <p className="font-jose font-normal text-[14px] text-[#151875] pr-3">$26.00 </p>
-                                    <p className="font-jose font-normal text-[14px] text-[#FB2448] line-through">$42.00</p>
-                                </div>
-                            </div>
-                        </div>
+                
                     </div>
                 </div>
             </Container>

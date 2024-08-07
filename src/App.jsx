@@ -15,6 +15,7 @@ import About from "./pages/About"
 import Contact from "./pages/Contact"
 import Error from "./pages/Error"
 import Faq from "./pages/Faq"
+import Registration from "./components/Registration"
 
 function App() {
   let router = createBrowserRouter(createRoutesFromElements(
@@ -28,12 +29,13 @@ function App() {
     <Route path="/shopping-cart" element={<ShoppingCart/>}></Route>
     <Route path="/order-complete" element={<OrderComplete/>}></Route>
     <Route path="/checkout" element={<HektoDemoPage/>}></Route>
-    <Route path="/myAccount" element={<MyAccount/>}></Route>
+    <Route path="/myaccount" element={<MyAccount/>}></Route>
     <Route path="/blog" element={<Blog/>}></Route>
     <Route path="/single-blog" element={<SingleBlog/>}></Route>
     <Route path="/about" element={<About/>}></Route>
     <Route path="/contact" element={<Contact/>}></Route>
     <Route path="/faq" element={<Faq/>}></Route>
+    <Route path="/registration" element={<Registration/>}></Route>
     <Route path="/*" element={<Error/>}></Route>
   </Route>
 

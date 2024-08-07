@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Container from './Container'
 import { FaSearch, FaBars } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
@@ -6,7 +6,11 @@ import { Link } from 'react-router-dom';
 
 
 const Menu = () => {
+    let [activeMenu,setActiveMenu] = useState(localStorage.getItem('activeMenu') || '');
     let [show, setShow] = useState(false)
+    useEffect(() => {
+        localStorage.setItem('activeMenu', activeMenu);
+    }, [activeMenu]);
     return (
         <Container>
             <div className="lg:flex lg:justify-between items-center lg:mx-0 mx-[10px] py-[15px]">
@@ -16,12 +20,12 @@ const Menu = () => {
                     </div>
                     <div className="w-[65%]">
                         <ul className={`lg:flex items-center justify-center lg:static absolute -z-30  ${show == true ? 'top-[150px] left-[0px] bg-[#F5F5F3] z-50  w-full  duration-700 text-center' : ' duration-700 top-[-400px] left-[0px] text-center  w-full bg-[none] '}`}>
-                            <li className='text-[16px] text-[#0D0E43] font-lato font-normal'><Link to="/">Home</Link></li>
-                            <li className='text-[16px] text-[#0D0E43] font-lato font-normal px-[17px]'>Pages</li>
-                            <li className='text-[16px] text-[#0D0E43] font-lato font-normal'>Products</li>
-                            <li className='text-[16px] text-[#0D0E43] font-lato font-normal px-[17px]'><Link to="/blog">Blog</Link> </li>
-                            <li className='text-[16px] text-[#0D0E43] font-lato font-normal'> <Link to="/pages">Shop</Link></li>
-                            <li className='text-[16px] text-[#0D0E43] font-lato font-normal p-[17px]'><Link to="/contact">Contact</Link></li>
+                            <li onClick={()=>setActiveMenu('Home')} className={`${activeMenu === 'Home' ? ' text-[#FF2AAA] font-lato font-normal text-[16px] ' : '  text-[#0D0E43] font-lato font-normal text-[16px] '}`} ><Link to="/">Home</Link></li>
+                            <li onClick={()=>setActiveMenu('Pages')} className={`${activeMenu === 'Pages' ? ' text-[#FF2AAA] mx-3 font-lato font-normal text-[16px] ' : 'text-[#0D0E43] mx-3 font-lato font-normal text-[16px]  '}`}>Pages</li>
+                            <li onClick={()=>setActiveMenu('Products')} className={`${activeMenu === 'Products' ? ' text-[#FF2AAA] font-lato font-normal text-[16px] ' : '  text-[#0D0E43] font-lato font-normal text-[16px] '}`}>Products</li>
+                            <li onClick={()=>setActiveMenu('Blog')} className={`${activeMenu === 'Blog' ? ' text-[#FF2AAA] mx-3 font-lato font-normal text-[16px] ' : ' font-lato font-normal text-[16px]   text-[#0D0E43] mx-3'}`}><Link to="/blog">Blog</Link> </li>
+                            <li onClick={()=>setActiveMenu('Shop')} className={`${activeMenu === 'Shop' ? ' text-[#FF2AAA] font-lato font-normal text-[16px] ' : 'font-lato font-normal text-[16px]   text-[#0D0E43]'}`}> <Link to="/pages">Shop</Link></li>
+                            <li onClick={()=>setActiveMenu('Contact')} className={`${activeMenu === 'Contact' ? ' text-[#FF2AAA] mx-3 font-lato font-normal text-[16px] ' : 'font-lato font-normal text-[16px]   text-[#0D0E43] mx-3'}`}><Link to="/contact">Contact</Link></li>
                         </ul>
                     </div>
 

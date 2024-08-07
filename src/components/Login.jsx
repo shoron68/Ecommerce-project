@@ -1,8 +1,39 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Container from './Container'
 import Sponsor from './Sponsor'
+import { Link, useNavigate } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 const Login = () => {
+    const auth = getAuth();
+    let [email,setEmail]=useState()
+    let [password,setPassword]=useState()
+    let navigate= useNavigate()
+
+
+    let handleEmail = (e) =>{
+        setEmail(e.target.value)
+    }
+    let handlePass = (e) =>{
+        setPassword(e.target.value)
+    }
+    let handleLogin = ()=>{
+        signInWithEmailAndPassword(auth, email, password)
+            .then((user) => {
+                toast(" ডুকেছে ")
+                setTimeout(()=>{
+                    navigate("/")
+                },2000)
+            })
+            .catch((error) => {
+                toast.error(" হবোনা");
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorMessage);
+            });
+    }
   return (
     <>
     <div className=' bg-[#F6F5FF] py-[90px]'>
@@ -14,9 +45,6 @@ const Login = () => {
         </div>
     </Container>
 </div>
-
-
-
 <div className=' py-[100px]'>
         <Container>
             <div className=" ml-[390px]">
@@ -27,20 +55,21 @@ const Login = () => {
                         <p className=' font-lato font-normal text-[#9096B2] text-[18px] text-center'>Please login using account detail bellow.</p>
                     </div>
                     <div className="">
-                        <input type="Email" className=' font-lato font-normal text-[#9096B2] text-[18px] border-[2px] border-[#9096B2] w-full h-[50px] outline-none pl-[10px] my-[30px] rounded-[3px]' placeholder='Email Address' />
-                        <input type="Password" className=' font-lato font-normal text-[#9096B2] text-[18px] border-[2px] border-[#9096B2] w-full h-[50px] outline-none pl-[10px] my-[10px] rounded-[3px]' placeholder='Password' />
+                        <input onChange={handleEmail}  type="Email" className=' font-lato font-normal text-[#9096B2] text-[18px] border-[2px] border-[#9096B2] w-full h-[50px] outline-none pl-[10px] my-[30px] rounded-[3px]' placeholder='Email Address' />
+                        <input onChange={handlePass} type="Password" className=' font-lato font-normal text-[#9096B2] text-[18px] border-[2px] border-[#9096B2] w-full h-[50px] outline-none pl-[10px] my-[10px] rounded-[3px]' placeholder='Password' />
                     </div>
 
                     <p className=' font-lato font-medium text-[#9096B2] text-[17px]'>Forgot your password?</p>
 
 
-                    <button className=' border-[1px] border-[#FB2E86] py-[15px] w-full bg-[#FB2E86] rounded-[5px] my-[30px]'>
-                         <a className='font-lato font-medium text-[17px] text-[#FFFFFF]'>Sign In</a>
+                    <button onClick={handleLogin} className=' border-[1px] border-[#FB2E86] py-[15px] w-full bg-[#FB2E86] rounded-[5px] my-[30px] font-lato font-medium text-[17px] text-[#FFFFFF]'>
+                         LogIn
                     </button>
 
-                    <h5 className=' font-lato font-medium text-[17px] text-[#9096B2] text-center'>Don’t have an Account?Create account</h5>
+                    <h5 className=' font-lato font-medium text-[17px] text-[#9096B2] text-center'>Don’t have an Account? <span className='text-[#FB2E86] pl-[5px]'> <Link to="/registration">Create account</Link> </span> </h5>
                    </div>
                 </div>
+                <ToastContainer/>
             </div>
         </Container>
 
