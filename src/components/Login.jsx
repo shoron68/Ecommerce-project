@@ -22,13 +22,13 @@ const Login = () => {
     let handleLogin = ()=>{
         signInWithEmailAndPassword(auth, email, password)
             .then((user) => {
-                toast(" ডুকেছে ")
+                toast(" Success ")
                 setTimeout(()=>{
-                    navigate("/")
+                    navigate("/checkout")
                 },2000)
             })
             .catch((error) => {
-                toast.error(" হবোনা");
+                toast.error(" Invaild Email Or Password");
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 console.log(errorMessage);

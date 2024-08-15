@@ -31,7 +31,7 @@ const Registration = () => {
             updateProfile(auth.currentUser, {
                 displayName: name
                   }).then(() => {
-                      toast("অসতিছি")
+                      toast("Success")
                     setTimeout(()=>{
                         navigate("/myaccount")
                     },1000)
