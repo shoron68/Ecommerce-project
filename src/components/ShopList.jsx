@@ -1,5 +1,5 @@
 import Container from './Container'
-import React, { useContext } from 'react'
+import React, { useContext,useEffect } from 'react'
 import { GoDotFill } from "react-icons/go";
 import { FaStar, FaList } from "react-icons/fa";
 import {  IoGridSharp } from "react-icons/io5";
@@ -17,6 +17,7 @@ const ShopList = () => {
     let lastpage = pageStart * perPage
     let fastpage = lastpage - perPage
     let Allpage = data.slice(fastpage , lastpage )
+    let [category,setCategory]=useState([])
 
 
     
@@ -44,6 +45,15 @@ const ShopList = () => {
       setPageStart((state) => state - 1)
     }
 
+  }
+
+  useEffect(()=>{
+    setCategory([...new Set(data.map((item)=>item.category))])
+  },[data])
+
+  let handelCategory = (categoryitem)=>{
+    let catFilter = data.filter((item)=>item.category == categoryitem)
+    setCategoryFilter(catFilter)
   }
 
   
@@ -158,15 +168,9 @@ const ShopList = () => {
                         <div className="my-8">
                             <h4 className="font-jose font-bold text-[20px] text-[#151875] underline decoration-[#000] decoration-2 underline-offset-[5px]">Categories</h4>
                             <ul>
-                                <li className="font-lato font-normal text-[16px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFDBF1] bg-[#FFDBF1] checked:bg-[#FF3EB2]" />Prestashop</li>
-                                <li className="font-lato font-normal text-[16px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFDBF1] bg-[#FFDBF1] checked:bg-[#FF3EB2]" />Magento</li>
-                                <li className="font-lato font-normal text-[16px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFDBF1] bg-[#FFDBF1] checked:bg-[#FF3EB2]" />Bigcommerce</li>
-                                <li className="font-lato font-normal text-[16px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFDBF1] bg-[#FFDBF1] checked:bg-[#FF3EB2]" />osCommerce</li>
-                                <li className="font-lato font-normal text-[16px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFDBF1] bg-[#FFDBF1] checked:bg-[#FF3EB2]" />3dcart</li>
-                                <li className="font-lato font-normal text-[16px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFDBF1] bg-[#FFDBF1] checked:bg-[#FF3EB2]" />Bags</li>
-                                <li className="font-lato font-normal text-[16px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFDBF1] bg-[#FFDBF1] checked:bg-[#FF3EB2]" />Accessories</li>
-                                <li className="font-lato font-normal text-[16px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFDBF1] bg-[#FFDBF1] checked:bg-[#FF3EB2]" />Jewellery</li>
-                                <li className="font-lato font-normal text-[16px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFDBF1] bg-[#FFDBF1] checked:bg-[#FF3EB2]" />Watches</li>
+                                {category.map((item) => (
+                                    <li onClick={() => handelCategory(item)} className='ml-[10px] flex items-center uppercase justify-between text-[14px] text-[#767676] py-[10px] cursor-pointer'>{item}</li>
+                                ))}
                             </ul>
                         </div>
                         <div className="">
@@ -213,7 +217,7 @@ const ShopList = () => {
 
                     <div className="w-[75%]">
                     
-                   <PostList Allpage={Allpage}/>
+                   <PostList Allpage={Allpage} categoryFilter={categoryFilter}/>
                    <div className="text-center pt-[50px]">
                         <PaginationArea pageNumber={pageNumber} paginate={paginate} pageStart={pageStart} next={next} prev={prev}/>
                         </div>

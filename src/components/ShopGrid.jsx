@@ -8,6 +8,7 @@ import { ApiData } from './apilinks/ContextApi';
 import Postt from './pagination/Postt';
 import PaginationArea from './pagination/PaginationArea';
 import { Link } from 'react-router-dom';
+import Bal from './pagination/Bal';
 
 const ShopGrid = () => {  
     let [categoryFilter, setCategoryFilter] = useState([])
@@ -18,11 +19,14 @@ const ShopGrid = () => {
     let fastpage = lastpage - perPage
     let Allpage = data.slice(fastpage , lastpage )
     let [category,setCategory]=useState([])
+    let [priceLow, setPriceLow] = useState("")
+    let [priceHigh, setPriceHigh] = useState("")
+    let [priceDispay, setPriceDisplay] = useState([])
 
 
     
     let pageNumber = []
-  for(let i = 0; i < Math.ceil(categoryFilter.length > 0 ? categoryFilter :data.length / perPage); i++){
+  for(let i = 0; i < Math.ceil(categoryFilter.length > 0 ? categoryFilter : data.length / perPage); i++){
     pageNumber.push(i)
 }
 
@@ -50,6 +54,22 @@ const ShopGrid = () => {
   useEffect(()=>{
     setCategory([...new Set(data.map((item)=>item.category))])
   },[data])
+
+  let handelCategory = (categoryitem)=>{
+    let catFilter = data.filter((item)=>item.category == categoryitem)
+    setCategoryFilter(catFilter)
+  }
+  let handleOneToTen = (value)=>{
+    setPriceLow(value.low)
+    setPriceHigh(value.high)
+    let priceFilter = data.filter((item)=> item.price > value.low && item.price < value.high)
+    setPriceDisplay(priceFilter);
+}
+let handleSortBy =(e)=>{
+    setPerPage(e.target.value);
+
+}
+  
 
     return (
         <div className="">
@@ -79,9 +99,10 @@ const ShopGrid = () => {
                             <div className="flex items-center">
                                 <p className="font-lato font-normal text-[16px] text-[#3F509E]">Sort By:</p>
                                 <form className=" w-[96px] pl-2 items-center">
-                                    <select id="" className="border-[1px] border-[#E7E6EF] font-lato font-normal text-[#8A8FB9] text-[12px] pt-1 pb-1 ">
-                                        <option selected>Default</option>
-                                        <option>Best Match</option>
+                                    <select onChange={handleSortBy} id="" className="border-[1px] border-[#E7E6EF] font-lato font-normal text-[#8A8FB9] text-[12px] pt-1 pb-1 ">
+                                        <option selected value="6">6</option>
+                                        <option value="12">12</option>
+                                        <option value="18">18</option>
                                     </select>
                                 </form>
                             </div>
@@ -156,18 +177,23 @@ const ShopGrid = () => {
                                 </li>
                             </ul>
                         </div>
-                        <div className="my-8">
+                        <div className="">
                             <h4 className="font-josefin font-bold text-[20px] text-[#151875] underline decoration-[#000] decoration-2 underline-offset-[5px]">Categories</h4>
-                                <li className="font-lato font-normal text-[16px] text-[#7E81A2] my-2">{category}</li> 
+
+                            <ul>
+                                {category.map((item) => (
+                                    <li onClick={() => handelCategory(item)} className='ml-[10px] flex items-center uppercase justify-between text-[14px] text-[#767676] py-[10px] cursor-pointer'>{item}</li>
+                                ))}
+                            </ul>
+                                
                         </div>
 
                         <div className="">
                             <h4 className="font-jose font-bold text-[20px] text-[#151875] underline decoration-[#000] decoration-2 underline-offset-[5px]">Price Filter</h4>
                             <ul>
-                                <li className="font-lato font-normal text-[16px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFDBF1] bg-[#FFDBF1] checked:bg-[#FF3EB2]" />$0.00 - $150.00</li>
-                                <li className="font-lato font-normal text-[16px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFDBF1] bg-[#FFDBF1] checked:bg-[#FF3EB2]" />$150.00 - $350.00</li>
-                                <li className="font-lato font-normal text-[16px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFDBF1] bg-[#FFDBF1] checked:bg-[#FF3EB2]" />$150.00 - $504.00</li>
-                                <li className="font-lato font-normal text-[16px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFDBF1] bg-[#FFDBF1] checked:bg-[#FF3EB2]" />$450.00 +</li>
+                                <li  onClick={()=>handleOneToTen({low:0, high:10})} className="font-lato font-normal text-[16px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFDBF1] bg-[#FFDBF1] checked:bg-[#FF3EB2] cursor-pointer" />$0.00 - $9.99</li>
+                                <li  onClick={()=>handleOneToTen({low:10, high:20})} className="font-lato font-normal text-[16px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFDBF1] bg-[#FFDBF1] checked:bg-[#FF3EB2] cursor-pointer" />$10.00 - $19.99</li>
+                                <li  onClick={()=>handleOneToTen({low:20, high:30})} className="font-lato font-normal text-[16px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFDBF1] bg-[#FFDBF1] checked:bg-[#FF3EB2] cursor-pointer" />$20.00 - $29.99</li>
                             </ul>
                         </div>
                         <div className="w-[70%] mt-8">
@@ -203,7 +229,8 @@ const ShopGrid = () => {
 
 
                     <div className="w-[75%]">
-                    <Postt Allpage={Allpage} />   
+                        {/* <Bal Allpage={Allpage} categoryFilter={categoryFilter} priceDispay={priceDispay}/> */}
+                    <Postt Allpage={Allpage} categoryFilter={categoryFilter} priceDispay={priceDispay} />   
                         <div className="text-center pt-[50px]">
                         <PaginationArea pageNumber={pageNumber} paginate={paginate} pageStart={pageStart} next={next} prev={prev}/>
                         </div>

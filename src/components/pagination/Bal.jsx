@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux';
 import { addToCart } from '../slice/productSlice';
 import { useNavigate } from 'react-router-dom';
 
-const Postt = ({ Allpage,categoryFilter,multi,priceDispay }) => {
+const Bal = ({ Allpage,categoryFilter,multi,priceDispay }) => {
     let [activeIcon, setActiveIcon] = useState('');
         let dispatch = useDispatch()
         let navigate = useNavigate()
@@ -24,7 +24,7 @@ const Postt = ({ Allpage,categoryFilter,multi,priceDispay }) => {
             setCount(false)
         }
 
-        let handleCart = (item)=>{
+        let handleAddTocart = (item)=>{
             dispatch(addToCart({...item, qun:1}))
         }
         let handleShowLess = ()=>{
@@ -47,7 +47,7 @@ const Postt = ({ Allpage,categoryFilter,multi,priceDispay }) => {
             </Link>
             <div className="">
                 <div className="absolute bottom-[-10px] left-[20px] opacity-0 group-hover:overflow-hidden group-hover:bottom-[30px] group-hover:opacity-100 ease-in-out duration-700">
-                    <div onClick={()=>handleCart(item)} className="">
+                    <div onClick={()=>handleAddTocart(item)} className="">
                     <div onClick={() => setActiveIcon('IoCartOutline')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'IoCartOutline' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'IoCartOutline'}>
                         <IoCartOutline />
                     </div>
@@ -101,11 +101,9 @@ const Postt = ({ Allpage,categoryFilter,multi,priceDispay }) => {
                             </Link>
                             <div className="">
                                 <div className="absolute bottom-[-10px] left-[20px] opacity-0 group-hover:overflow-hidden group-hover:bottom-[30px] group-hover:opacity-100 ease-in-out duration-700">
-                                <div onClick={()=>handleCart(item)} className="">
-                    <div onClick={() => setActiveIcon('IoCartOutline')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'IoCartOutline' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'IoCartOutline'}>
-                        <IoCartOutline />
-                    </div>
-                    </div>
+                                    <div onClick={() => setActiveIcon('IoCartOutline')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'IoCartOutline' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'IoCartOutline'}>
+                                        <IoCartOutline />
+                                    </div>
                                     <div onClick={() => setActiveIcon('FaHeart')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'FaHeart' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'FaHeart'}>
                                         <IoMdHeartEmpty />
                                     </div>
@@ -152,11 +150,9 @@ const Postt = ({ Allpage,categoryFilter,multi,priceDispay }) => {
                         </Link>
                         <div className="">
                             <div className="absolute bottom-[-10px] left-[20px] opacity-0 group-hover:overflow-hidden group-hover:bottom-[30px] group-hover:opacity-100 ease-in-out duration-700">
-                            <div onClick={()=>handleCart(item)} className="">
-                    <div onClick={() => setActiveIcon('IoCartOutline')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'IoCartOutline' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'IoCartOutline'}>
-                        <IoCartOutline />
-                    </div>
-                    </div>
+                                <div onClick={() => setActiveIcon('IoCartOutline')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'IoCartOutline' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'IoCartOutline'}>
+                                    <IoCartOutline />
+                                </div>
                                 <div onClick={() => setActiveIcon('FaHeart')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'FaHeart' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'FaHeart'}>
                                     <IoMdHeartEmpty />
                                 </div>
@@ -190,4 +186,4 @@ const Postt = ({ Allpage,categoryFilter,multi,priceDispay }) => {
     )
 }
 
-export default Postt
+export default Bal

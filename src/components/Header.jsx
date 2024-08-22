@@ -6,12 +6,18 @@ import { FaAngleDown } from "react-icons/fa6";
 import { FaRegHeart } from "react-icons/fa";
 import { BsCart } from "react-icons/bs";
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 
 
 
 const Header = () => {
+    let dispatch =useDispatch()
+    let data = useSelector((state)=>state.product.cartItem);
+    console.log(data);
+    
+
     return (
         <div className="py-[13px]  bg-[#7E33E0]">
             <Container >
@@ -63,6 +69,7 @@ const Header = () => {
                             <Link to="/shopping-cart">
                             
                         <div className="items-center text-[16px] text-[#f1f1f1] font-josefin font-semibold ">
+                            {data.length > 0 ? <div className="text-[12px] absolute top-[10px] right-[55px] ">{data.length}</div> :""}
                             <BsCart/>
                         </div>
                             </Link>

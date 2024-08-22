@@ -7,11 +7,15 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { ApiData } from './apilinks/ContextApi';
+import { useDispatch } from 'react-redux';
+import { addToCart } from './slice/productSlice';
 
 
 const FeatureProduct = () => {
 
  let data=useContext(ApiData)
+ let dispatch =useDispatch()
+
 
 
   const settings = {
@@ -52,6 +56,10 @@ const FeatureProduct = () => {
     )
     
   };
+  let handleCart =(item)=>{
+    dispatch(addToCart({...item,qun:1}))
+    
+  }
 
   return (
     <Container className={`py-[128px]`}>
@@ -90,7 +98,7 @@ const FeatureProduct = () => {
               </div>
 
               <div className="absolute top-[11px] w-full  left-[-80px]  group-hover:left-[11px] duration-500 flex   ">
-                <div className=" text-[#1DB4E7] h-[25px] w-[25px] translate-y-[-5px] rounded-[50%] hover:bg-[#EEEFFB] hover:text-[#2F1AC4] duration-500">
+                <div onClick={()=>handleCart(item)} className=" text-[#1DB4E7] h-[25px] w-[25px] translate-y-[-5px] rounded-[50%] hover:bg-[#EEEFFB] hover:text-[#2F1AC4] duration-500">
                   < BsCart className='mx-auto translate-y-[5px]' />
                 </div>
                 <div className=" text-[#1DB4E7] h-[25px] w-[25px] translate-y-[-4px] rounded-[50%] hover:bg-[#EEEFFB] hover:text-[#2F1AC4] duration-500">
