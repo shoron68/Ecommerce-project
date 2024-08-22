@@ -15,7 +15,6 @@ import { useDispatch, useSelector } from 'react-redux';
 const Header = () => {
     let dispatch =useDispatch()
     let data = useSelector((state)=>state.product.cartItem);
-    console.log(data);
     
 
     return (
