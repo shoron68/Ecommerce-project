@@ -17,7 +17,7 @@ const Homee = () => {
     <>
     <Banner/>
     <FeatureProduct/>
-    <LatestProduct/>
+    {/* <LatestProduct/> */}
     <WhatShopexOffer/>
     <UniqueFeature/>
     <TrendingProduct/>

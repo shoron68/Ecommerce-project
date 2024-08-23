@@ -11,8 +11,8 @@ const Footer = () => {
   return (
     <div className="bg-[#EEEFFB] mt-[115px]">
         <Container>
-            <div className="flex pt-[95px] pb-[101px]">
-                <div className="w-[37%]">
+            <div className="flex flex-wrap pt-[95px] pb-[101px] mx-[15px] ">
+                <div className="lg:w-[37%] w-full lg:text-start text-center">
                     <div className="">
                         <h2 className='text-[38px] text-[#000000] font-josefin font-bold'>Hekto</h2>
                     </div>
@@ -26,8 +26,8 @@ const Footer = () => {
                     </div>
                 </div>
 
-                <div className="w-[20%]">
-                    <div className="pb-[42px]">
+                <div className="lg:w-[20%] w-[50%]  mt-[20px] lg:mt-0">
+                    <div className="lg:pb-[42px] pb-[20px]">
                         <h3 className='text-[22px] text-[#000000] font-lato font-semibold' >Catagories</h3>
                     </div>
                     <div className="">
@@ -42,8 +42,9 @@ const Footer = () => {
                 </div>
 
 
-                <div className="w-[20%]">
-                    <div className="pb-[42px]">
+                <div className="lg:w-[20%] w-[50%]  mt-[20px] lg:mt-0 flex lg:justify-start justify-end">
+                    <div className="">
+                    <div className="lg:pb-[42px] pb-[20px]">
                         <h3 className='text-[22px] text-[#000000] font-lato font-semibold' >Customer Care</h3>
                     </div>
                     <div className="">
@@ -55,10 +56,11 @@ const Footer = () => {
                             <li className='text-[16px] text-[#8A8FB9] font-lato font-normal'><a href="">Order Tracking</a></li>
                         </ul>
                     </div>
+                    </div>
                 </div>
 
-                <div className="w-[20%]">
-                    <div className="pb-[42px]">
+                <div className="lg:w-[20%] w-full mt-[20px] lg:mt-0">
+                    <div className="lg:pb-[42px] pb-[20px]">
                         <h3 className='text-[22px] text-[#000000] font-lato font-semibold' >Pages</h3>
                     </div>
                     <div className="">
