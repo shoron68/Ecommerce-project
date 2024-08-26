@@ -68,7 +68,7 @@ const Header = () => {
                             <Link to="/shopping-cart">
                             
                         <div className="items-center text-[16px] text-[#f1f1f1] font-josefin font-semibold ">
-                            {data.length > 0 ? <div className="text-[12px] absolute top-[10px] right-[55px] ">{data.length}</div> :""}
+                            {data.length > 0 ? <div className="text-[12px] absolute lg:top-[10px] lg:right-[55px] right-[30px] ">{data.length}</div> :""}
                             <BsCart/>
                         </div>
                             </Link>
