@@ -41,7 +41,7 @@ const SinglePdetails = () => {
     <>
     <section className="bg-[#F6F5FF] py-[100px] my-10">
             <Container>
-                <div className="">
+                <div className="lg:mx-0 mx-[15px]">
                     <h2 className="font-josefin font-bold text-[36px] text-[#101750]">Shop Grid Default</h2>
                     <div className="">
                     <p className='text-[16px] text-[#000000] font-lato font-medium '>Home . Pages . <span className='text-[#FB2E86]'>Shop Grid Default</span></p>
@@ -51,26 +51,26 @@ const SinglePdetails = () => {
         </section>
     
     <Container>
-                <div className="flex justify-around items-center mb-10 shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px] p-[15px]">
+                <div className="lg:flex justify-around items-center mb-10 shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px] p-[15px] lg:mx-0 mx-[15px]">
 
                     {singleProduct?.images?.map((item)=>(
-                    <div className="flex items-center justify-between w-[38%]">
+                    <div className="flex items-center justify-between lg:w-[38%] w-full">
                         <div className="pr-[20px]">
                             <img src={item} alt="details" />
-                            <img src={item} alt="details" className="my-[10px]" />
-                            <img src={item} alt="details" />
+                            <img src={item} alt="details" className="my-[10px] lg:block hidden" />
+                            <img src={item} alt="details " className="lg:block hidden" />
                         </div>
                         <div className="">
-                        <img src={item} className="" alt="" />
+                        <img src={item} className="lg:block hidden" alt="" />
                         </div>
                     </div>
 
                     ))}
 
 
-                    <div className="w-[45%]">
-                        <h4 className="font-josefin font-semibold text-[36px] text-[#0D134E]">{singleProduct.title}</h4>
-                        <span className="flex items-center my-[15px] ">
+                    <div className="lg:w-[45%] w-full">
+                        <h4 className="font-josefin font-semibold lg:text-[36px] text-[30px] text-[#0D134E]">{singleProduct.title}</h4>
+                        <span className="flex items-center lg:my-[15px] my-[10px] ">
                             <p className='text-[#FFCC2E] flex gap-x-1'>
                             {Reating}                         
                             </p>
@@ -80,11 +80,11 @@ const SinglePdetails = () => {
                             <p className="font-josefin font-normal text-[14px] text-[#FB2448] line-through">$32.00</p>
                         </div>
                         <h5 className="font-josefin font-semibold text-[16px] text-[#0D134E] my-[15px]">Color</h5>
-                        <p className="font-josefin font-semibold text-[16px] text-[#A9ACC6] w-[540px]">{singleProduct.description}</p>
+                        <p className="font-josefin font-semibold text-[16px] text-[#A9ACC6] w-full lg:w-[540px]">{singleProduct.description}</p>
                         <Link to="/shopping-cart">
                         
                         <div onClick={()=>handleAddToCart(singleProduct)} className=" flex items-center  relative mt-5 mb-4 group">
-                            <button  className="font-josefin py-[15px] pl-[30px] pr-[40px] border-[1px] border-[#FB2448] text-[#0D134E] hover group-hover:bg-[#FB2448] group-hover:text-[#fff]  duration-300">Add To cart</button>
+                            <button  className="font-josefin py-[15px] pl-[30px] pr-[40px] border-[1px] border-[#FB2448] text-[#0D134E] hover group-hover:bg-[#FB2448] group-hover:text-[#fff] rounded-[5px]  duration-300">Add To cart</button>
                             <FaRegHeart className='absolute top-50% left-[120px] group-hover:text-[#fff]  duration-300' />
                         </div>
                         </Link>

@@ -13,13 +13,13 @@ const SingleRelatedProduct = () => {
     let [activeIcon, setActiveIcon] = useState('')
     return (
         <Container className='my-10'>
-            <div className="">
-                <h2 className="font-josefin font-bold text-[36px] text-[#101750]">Related Products</h2>
+            <div className="lg:mx-0 mx-[15px]">
+                <h2 className="font-josefin font-bold lg:text-[36px] text-[30px] text-[#101750]">Related Products</h2>
             </div>
-            <div className="mt-10 flex justify-between">
+            <div className="mt-10 flex justify-between flex-wrap items-center">
 
 
-                <div className="">
+                <div className="lg:mx-0 mx-[15px]">
                     <div className="relative group">
                         <img src={rimg1} alt="related" />
                         <section className="group">
@@ -53,7 +53,7 @@ const SingleRelatedProduct = () => {
                     </div>
                 </div>
 
-                <div className="">
+                <div className="lg:mx-0 mx-[15px]">
                     <div className="relative group">
                         <img src={rimg2} alt="related" />
                         <section className="group">
@@ -87,7 +87,7 @@ const SingleRelatedProduct = () => {
                     </div>
                 </div>
 
-                <div className="">
+                <div className="lg:mx-0 mx-[15px]">
                     <div className="relative group">
                         <img src={rimg3} alt="related" />
                         <section className="group">
@@ -121,7 +121,7 @@ const SingleRelatedProduct = () => {
                     </div>
                 </div>
 
-                <div className="">
+                <div className="lg:mx-0 mx-[15px]">
                     <div className="relative group">
                         <img src={rimg4} alt="related" />
                         <section className="group">
