@@ -8,13 +8,13 @@ import { Link } from 'react-router-dom';
 
 const OrderCompleteBody = () => {
   return (
-    <div className=' py-[100px]'>
+    <div className=' lg:py-[100px]'>
             <Container>
-                <div className="  justify-center text-center ml-[250px] ">
-                    <div className="w-[80%]">
+                <div className="  justify-center text-center lg:ml-[250px] lg:mx-0 mx-[60px] ">
+                    <div className="lg:w-[80%] w-full">
                         <div className=" border-[1px] border-[#F6F5FF] py-[50px] px-[30px] relative">
-                            <h1 className=' ml-[350px]'><FaCheck className=' text-[35px] text-[#FF1788]' /></h1>
-                            <h3 className=' font-josefin font-bold text-[#101750] text-[35px]'>Your Order Is Completed! </h3>
+                            <h1 className=' lg:ml-[350px] lg:static flex justify-end'><FaCheck className=' text-[35px] text-[#FF1788]' /></h1>
+                            <h3 className=' font-josefin font-bold text-[#101750] text-[30px] lg:text-[35px]'>Your Order Is Completed! </h3>
                             <p className=' font-josefin font-normal text-[#8D92A7] text-[16px]'>Thank you for your order! Your order is being processed and will be completed within 3-6 hours. You will receive an email confirmation when your order is completed.</p>
                             <div className="">
                             <Link to="/pages">

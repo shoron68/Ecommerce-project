@@ -16,7 +16,6 @@ import Contact from "./pages/Contact"
 import Error from "./pages/Error"
 import Faq from "./pages/Faq"
 import Registration from "./components/Registration"
-import Bal from "./components/pagination/Bal"
 
 function App() {
   let router = createBrowserRouter(createRoutesFromElements(
@@ -38,7 +37,6 @@ function App() {
     <Route path="/faq" element={<Faq/>}></Route>
     <Route path="/registration" element={<Registration/>}></Route>
     <Route path="/*" element={<Error/>}></Route>
-    <Route path="/bal" element={<Bal/>}></Route>
   </Route>
 
   ))

@@ -38,17 +38,17 @@ const Login = () => {
     <>
     <div className=' bg-[#F6F5FF] py-[90px]'>
     <Container>
-        <div className="">
+        <div className="lg:mx-0 mx-[15px]">
             <h2 className=' font-josefin font-bold text-[#101750] text-[35px]'>My Account</h2>
-               <h2><span className=' font-hakto font-medium text-[16px] text-[#101750]  hover:text-[#FB2E86] duration-300'>Home . Pages </span>
-             <span className=' font-hakto font-medium text-[16px] text-[#FB2E86]  '>. My Account</span></h2>
+               <h2><span className=' font-josefin font-medium text-[16px] text-[#101750]  hover:text-[#FB2E86] duration-300'>Home . Pages </span>
+             <span className=' font-josefin font-medium text-[16px] text-[#FB2E86]  '>. My Account</span></h2>
         </div>
     </Container>
 </div>
-<div className=' py-[100px]'>
+<div className=' lg:py-[100px]'>
         <Container>
-            <div className=" ml-[390px]">
-                <div className="w-[60%]">
+            <div className=" lg:ml-[390px]">
+                <div className="lg:w-[60%]">
                    <div className=" border-[1px] px-[30px] py-[40px] shadow-xl">
                    <div className="">
                         <h2 className=' font-josefin font-bold text-[#000000] text-[35px] text-center'>Login</h2>

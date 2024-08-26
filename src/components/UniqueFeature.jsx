@@ -14,7 +14,7 @@ const UniqueFeature = () => {
           </div>
           <div className="w-full lg:w-1/2 mt-8 lg:mt-0">
             <div className="px-4 lg:px-0">
-              <h2 className='text-3xl lg:text-[35px] text-[#151875] font-josefin font-bold'>Unique Features Of Latest & Trending Products</h2>
+              <h2 className='text-3xl lg:text-[35px] leading-[120%] text-[#151875] font-josefin font-bold'>Unique Features Of Latest & Trending Products</h2>
             </div>
             <div className="flex items-center pt-6 px-4 lg:px-0">
               <div className="h-2 w-2 rounded-full bg-[#FB2E86]"></div>

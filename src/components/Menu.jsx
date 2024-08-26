@@ -63,14 +63,16 @@ const Menu = () => {
 
     return (
         <Container>
-            <div className="lg:flex lg:justify-between items-center py-4 px-4 lg:px-0 overflow-x-hidden ">
+            <div className="lg:flex lg:justify-between items-center py-4 px-4 lg:px-0  ">
                 <div className="lg:w-[70%] w-full flex justify-between items-center ">
                     <div className="w-[10%]">
                         <h2 className='text-[24px] lg:text-[39px] text-[#0D0E43] font-josefin font-bold'>Hekto</h2>
                     </div>
-                    <div className="lg:w-[65%]  ">
+                    <div className="lg:w-[65%]">
                         <div className="">
-                        <ul className={`lg:flex items-center justify-center lg:static absolute ${show ? 'top-0 right-0 bg-[#FFFFFF] z-50 w-[250px] rounded-tl-[10px]  h-full pl-[30px] pt-[50px] duration-500 shadow-[13px_-3px_37px_0px_#7E33E0] ' : 'duration-500 top-0 right-[-250px] w-[250px] h-full bg-none lg:pl-0 pl-[30px] lg:pt-0 pt-[50px] absolute '}`}>
+                        <ul className={`lg:flex items-center justify-center lg:static absolute transition-all ${show ? 'top-0 right-0 bg-[#FFFFFF] z-50 w-[250px] rounded-tl-[10px]  h-full pl-[30px] pt-[50px] duration-500 shadow-[13px_-3px_37px_0px_#7E33E0]' : 'duration-500 top-0 right-[-250px] w-[250px] h-full bg-none lg:pl-0 pl-[30px] lg:pt-0 pt-[50px] absolute hidden'}`}>
+
+
                             <li onClick={() => setActiveMenu('Home')} className={`${activeMenu === 'Home' ? 'text-[#FF2AAA] font-lato font-normal text-[16px]' : 'text-[#0D0E43] font-lato font-normal text-[16px]'}`}>
                                 <Link to="/">Home</Link>
                             </li>

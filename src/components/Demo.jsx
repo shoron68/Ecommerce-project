@@ -40,36 +40,29 @@ const Demo = () => {
         <>
             <div className=' bg-[#F6F5FF] py-[90px]'>
                 <Container>
-                    <div className="">
+                    <div className="lg:mx-0 mx-[15px]">
                     <h3 className=' font-josefin font-semibold text-[#1D3178] text-[35px]'>Checkout</h3>
-                    <p className=' font-josefin font-medium text-[#1D3178] text-[16px]'>Cart/ Information/ Shipping/ Payment</p>
+                    <p className=' font-josefin font-medium text-[#1D3178] text-[16px]'>Cart. Information. Shipping. Payment</p>
                     </div>
                 </Container>
             </div>
 
 
 
-            <div className=' py-[40px]'>
+            <div className=' py-[40px] '>
             <Container>
-                <div className=" py-[20px]">
-                    
-                </div>
-
-                <div className=" flex justify-between ">
-                    <div className="w-[68%]">
+                <div className=" lg:flex justify-between  ">
+                    <div className="lg:w-[68%] w-full">
                         <div className=" border-[2px] px-[20px] py-[30px] bg-[#F8F8FD]">
                             <div className=" flex justify-between items-center">
                                 <h3 className=' font-josefin font-medium text-[18px] text-[#1D3178]'>Contact Information</h3>
-                                <p className=' font-josefin font-light text-[12px] text-[#C1C8E1]'>Already have an account? Log in</p>
+                                <p className=' font-josefin font-light text-[12px] text-[#C1C8E1]'>Already have an account? <button className='text-[#1D3178]'> Log in</button></p>
                             </div>
                             <div className="  ">
                                 {user.map((item ,i)=>(
 
                                 <div className="border-b-2">
-                                    <p className='text-[16px] text-[#1D3178] font-josefin font-normal pb-[10px]'>{item.email}</p>
-                                {/* <input type="text" placeholder={`${item.email}`}
-                                    className=' font-josefin font-light text-[12px] text-[#C1C8E1] border-none  w-full outline-none border-b-[2px] bg-[#F8F8FD]'/> */}
-                                    
+                                    <p className='text-[16px] text-[#1D3178] font-josefin font-normal pb-[10px]'>{item.email}</p>    
                                 </div>
                                 ))}
 
@@ -128,7 +121,7 @@ const Demo = () => {
 
                         </div>
                     </div>
-                    <div className="w-[29%]">
+                    <div className="lg:w-[29%] w-full">
                 
                             <div className=" flex justify-between items-center border-b-[1px] border-[#E1E1E4] py-[10px] mt-[15px]">
                                 <div className="">

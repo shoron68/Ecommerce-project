@@ -43,28 +43,28 @@ const PostList = ({ Allpage, categoryFilter }) => {
         <div className=" items-center">
             {filter.length > 0 ?
                 filter.map((item) => (
-                    <div className=" border-[1px]  px-4 py-4 my-[25px] shadow-sm">
-                        <div className=" flex gap-x-[40px] items-center">
+                    <div className=" border-[1px]  lg:px-4 lg:py-4 my-[25px] shadow-sm ">
+                        <div className=" lg:flex gap-x-[40px] items-centerlg:mb-0 lg:ml-0 ml-[10px] mb-[5px]">
                             <div className="">
-                                <Link to={`/product-details/${item.id}`}> < img src={item.thumbnail} alt="" className="h-[200px] w-[200px]" /></Link>
+                                <Link to={`/product-details/${item.id}`}> < img src={item.thumbnail} alt="" className="lg:h-[200px] lg:w-[200px] h-[90px] w-[100px]" /></Link>
                             </div>
-                            <div className=" w-[50%]">
-                                <div className=" flex  items-center gap-x-[20px] py-[8px]">
-                                    <h3 className=' font-hakto font-medium text-[#111C85] text-[20px]'>Accumsan tincidunt</h3>
+                            <div className=" lg:w-[50%] w-full">
+                                <div className=" lg:flex  items-center lg:gap-x-[20px] lg:py-[8px]">
+                                    <h3 className=' font-josefin font-medium text-[#111C85] text-[20px]'>Accumsan tincidunt</h3>
                                     <div className=" flex gap-x-[10px] ">
                                         <div className=" w-[10px] h-[10px] rounded-[50%] bg-[#DE9034]"></div>
                                         <div className=" w-[10px] h-[10px] rounded-[50%] bg-[#EC42A2]"></div>
                                         <div className=" w-[10px] h-[10px] rounded-[50%] bg-[#8568FF]"></div>
                                     </div>
                                 </div>
-                                <div className=" flex gap-x-[20px] items-center py-4">
-                                    <h5 className=' font-hakto font-normal text-[16px] text-[#111C85] hover:text-[#FF2AAA] duration-300'>$26.00</h5>
-                                    <h5 className=' font-hakto font-normal text-[16px] text-[#FF2AAA] hover:text-[#111C85] duration-300'>$52.00</h5>
-                                    <div className=" flex gap-x-[10px] text-[#FFC416]">
+                                <div className=" flex lg:gap-x-[20px] gap-x-[10px] items-center py-4">
+                                    <h5 className=' font-hakto font-normal lg:text-[16px] text-[12px] text-[#111C85] hover:text-[#FF2AAA] duration-300'>$26.00</h5>
+                                    <h5 className=' font-hakto font-normal lg:text-[16px] text-[12px] text-[#FF2AAA] hover:text-[#111C85] duration-300'>$52.00</h5>
+                                    <div className=" flex lg:gap-x-[10px] gap-x-[4px] text-[#FFC416]">
                                         {Reating}
                                     </div>
                                 </div>
-                                <p className=' font-hakto font-light text-[17px] text-[#9295AA]'>{item.description}</p>
+                                <p className=' font-hakto font-light lg:text-[17px] text-[12px] text-[#9295AA]'>{item.description}</p>
 
                             </div>
                         </div>
@@ -74,28 +74,28 @@ const PostList = ({ Allpage, categoryFilter }) => {
                 :
 
                 Allpage.map((item) => (
-                    <div className=" border-[1px]  px-4 py-4 my-[25px] shadow-sm">
-                        <div className=" flex gap-x-[40px] items-center">
+                    <div className=" border-[1px]  lg:px-4 lg:py-4 my-[25px] shadow-sm ">
+                        <div className=" lg:flex gap-x-[40px] items-centerlg:mb-0 lg:ml-0 ml-[10px] mb-[5px]">
                             <div className="">
-                                <Link to={`/product-details/${item.id}`}> < img src={item.thumbnail} alt="" className="h-[200px] w-[200px]" /></Link>
+                                <Link to={`/product-details/${item.id}`}> < img src={item.thumbnail} alt="" className="lg:h-[200px] lg:w-[200px] h-[90px] w-[100px]" /></Link>
                             </div>
-                            <div className=" w-[50%]">
-                                <div className=" flex  items-center gap-x-[20px] py-[8px]">
-                                    <h3 className=' font-hakto font-medium text-[#111C85] text-[20px]'>Accumsan tincidunt</h3>
+                            <div className=" lg:w-[50%] w-full">
+                                <div className=" lg:flex  items-center lg:gap-x-[20px] lg:py-[8px]">
+                                    <h3 className=' font-josefin font-medium text-[#111C85] text-[20px]'>Accumsan tincidunt</h3>
                                     <div className=" flex gap-x-[10px] ">
                                         <div className=" w-[10px] h-[10px] rounded-[50%] bg-[#DE9034]"></div>
                                         <div className=" w-[10px] h-[10px] rounded-[50%] bg-[#EC42A2]"></div>
                                         <div className=" w-[10px] h-[10px] rounded-[50%] bg-[#8568FF]"></div>
                                     </div>
                                 </div>
-                                <div className=" flex gap-x-[20px] items-center py-4">
-                                    <h5 className=' font-hakto font-normal text-[16px] text-[#111C85] hover:text-[#FF2AAA] duration-300'>$26.00</h5>
-                                    <h5 className=' font-hakto font-normal text-[16px] text-[#FF2AAA] hover:text-[#111C85] duration-300'>$52.00</h5>
-                                    <div className=" flex gap-x-[10px] text-[#FFC416]">
+                                <div className=" flex lg:gap-x-[20px] gap-x-[10px] items-center py-4">
+                                    <h5 className=' font-hakto font-normal lg:text-[16px] text-[12px] text-[#111C85] hover:text-[#FF2AAA] duration-300'>$26.00</h5>
+                                    <h5 className=' font-hakto font-normal lg:text-[16px] text-[12px] text-[#FF2AAA] hover:text-[#111C85] duration-300'>$52.00</h5>
+                                    <div className=" flex lg:gap-x-[10px] gap-x-[4px] text-[#FFC416]">
                                         {Reating}
                                     </div>
                                 </div>
-                                <p className=' font-hakto font-light text-[17px] text-[#9295AA]'>{item.description}</p>
+                                <p className=' font-hakto font-light lg:text-[17px] text-[12px] text-[#9295AA]'>{item.description}</p>
 
                             </div>
                         </div>

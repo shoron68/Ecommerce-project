@@ -41,12 +41,12 @@ const Postt = ({ Allpage,categoryFilter,multi,priceDispay }) => {
     <div className="flex justify-between flex-wrap">
     {priceDispay.map((item ,i) => (
         <div key={i} className="group my-[15px]">
-        <div className="relative p-[35px] bg-[#F6F7FB] group-hover:bg-[#EBF4F3] ease-in-out duration-500">
+        <div className="relative lg:p-[35px] p-0 bg-[#F6F7FB] group-hover:bg-[#EBF4F3] ease-in-out duration-500">
             <Link to={`/product-details/${item.id}`}>
-                <img src={item.thumbnail} alt="" className="h-[200px] w-[200px]" />
+                <img src={item.thumbnail} alt="" className="  h-[200px] w-[200px]" />
             </Link>
             <div className="">
-                <div className="absolute bottom-[-10px] left-[20px] opacity-0 group-hover:overflow-hidden group-hover:bottom-[30px] group-hover:opacity-100 ease-in-out duration-700">
+                <div className="absolute bottom-[-10px] lg:left-[20px] left-[15px] opacity-0 group-hover:overflow-hidden lg:group-hover:bottom-[30px] group-hover:bottom-[10px]  group-hover:opacity-100 ease-in-out duration-700">
                     <div onClick={()=>handleCart(item)} className="">
                     <div onClick={() => setActiveIcon('IoCartOutline')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'IoCartOutline' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'IoCartOutline'}>
                         <IoCartOutline />
@@ -62,15 +62,15 @@ const Postt = ({ Allpage,categoryFilter,multi,priceDispay }) => {
             </div>
         </div>
         <div className="text-center mt-[18px]">
-            <h5 className="font-jose font-bold text-[18px] text-[#151875]">{item.title}</h5>
+            <h5 className="font-jose font-bold lg:text-[18px] text-[14px] text-[#151875]">{item.title}</h5>
             <div className="flex justify-center items-center">
                 <GoDotFill className="text-[#DE9034]" />
                 <GoDotFill className="text-[#EC42A2]" />
                 <GoDotFill className="text-[#8568FF]" />
             </div>
             <div className="flex items-center justify-center">
-                <p className="font-jose font-normal text-[14px] text-[#151875] pr-3">${item.price}</p>
-                <p className="font-jose font-normal text-[14px] text-[#FB2448] line-through">${item.price}</p>
+                <p className="font-jose font-normal lg:text-[14px] text-[12px] text-[#151875] pr-3">${item.price}</p>
+                <p className="font-jose font-normal lg:text-[14px] text-[12px] text-[#FB2448] line-through">${item.price}</p>
             </div>
         </div>
     </div>
@@ -95,12 +95,12 @@ const Postt = ({ Allpage,categoryFilter,multi,priceDispay }) => {
                     <div className="flex justify-between flex-wrap">
                     {filterShow.map((item,i) => (
                         <div key={i} className="group my-[15px]">
-                        <div className="relative p-[35px] bg-[#F6F7FB] group-hover:bg-[#EBF4F3] ease-in-out duration-500">
+                        <div className="relative lg:p-[35px] p-0 bg-[#F6F7FB] group-hover:bg-[#EBF4F3] ease-in-out duration-500">
                             <Link to={`/product-details/${item.id}`}>
                                 <img src={item.thumbnail} alt="" className="h-[200px] w-[200px]" />
                             </Link>
                             <div className="">
-                                <div className="absolute bottom-[-10px] left-[20px] opacity-0 group-hover:overflow-hidden group-hover:bottom-[30px] group-hover:opacity-100 ease-in-out duration-700">
+                                <div className="absolute bottom-[-10px] lg:left-[20px] left-[15px] opacity-0 group-hover:overflow-hidden lg:group-hover:bottom-[30px] group-hover:bottom-[10px]  group-hover:opacity-100 ease-in-out duration-700">
                                 <div onClick={()=>handleCart(item)} className="">
                     <div onClick={() => setActiveIcon('IoCartOutline')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'IoCartOutline' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'IoCartOutline'}>
                         <IoCartOutline />
@@ -116,15 +116,15 @@ const Postt = ({ Allpage,categoryFilter,multi,priceDispay }) => {
                             </div>
                         </div>
                         <div className="text-center mt-[18px]">
-                            <h5 className="font-jose font-bold text-[18px] text-[#151875]">{item.title}</h5>
+                            <h5 className="font-jose font-bold lg:text-[18px] text-[14px] text-[#151875]">{item.title}</h5>
                             <div className="flex justify-center items-center">
                                 <GoDotFill className="text-[#DE9034]" />
                                 <GoDotFill className="text-[#EC42A2]" />
                                 <GoDotFill className="text-[#8568FF]" />
                             </div>
                             <div className="flex items-center justify-center">
-                                <p className="font-jose font-normal text-[14px] text-[#151875] pr-3">${item.price}</p>
-                                <p className="font-jose font-normal text-[14px] text-[#FB2448] line-through">${item.price}</p>
+                                <p className="font-jose font-normal lg:text-[14px] text-[12px] text-[#151875] pr-3">${item.price}</p>
+                                <p className="font-jose font-normal lg:text-[14px] text-[12px] text-[#FB2448] line-through">${item.price}</p>
                             </div>
                         </div>
                     </div>
@@ -146,12 +146,12 @@ const Postt = ({ Allpage,categoryFilter,multi,priceDispay }) => {
             <div className={`${multi == "activeMulti" ? "" : "flex justify-between flex-wrap"}`}>
                     {Allpage.map((item,i) => (
                     <div key={i} className="group my-[15px]">
-                    <div className="relative p-[35px] bg-[#F6F7FB] group-hover:bg-[#EBF4F3] ease-in-out duration-500">
+                    <div className="relative lg:p-[35px] p-0 bg-[#F6F7FB] group-hover:bg-[#EBF4F3] ease-in-out duration-500">
                         <Link to={`/product-details/${item.id}`}>
                             <img src={item.thumbnail} alt="" className="h-[200px] w-[200px]" />
                         </Link>
                         <div className="">
-                            <div className="absolute bottom-[-10px] left-[20px] opacity-0 group-hover:overflow-hidden group-hover:bottom-[30px] group-hover:opacity-100 ease-in-out duration-700">
+                            <div className="absolute bottom-[-10px] lg:left-[20px] left-[15px] opacity-0 group-hover:overflow-hidden lg:group-hover:bottom-[30px] group-hover:bottom-[10px]  group-hover:opacity-100 ease-in-out duration-700">
                             <div onClick={()=>handleCart(item)} className="">
                     <div onClick={() => setActiveIcon('IoCartOutline')} className={`border-[1px] p-[7px] rounded-full ${activeIcon === 'IoCartOutline' ? ' text-[#2F1AC4] bg-[#EEEFFB]' : 'bg-none border-none text-[#1389FF]'}`} aria-selected={activeIcon === 'IoCartOutline'}>
                         <IoCartOutline />
@@ -166,16 +166,16 @@ const Postt = ({ Allpage,categoryFilter,multi,priceDispay }) => {
                             </div>
                         </div>
                     </div>
-                    <div className="text-center mt-[18px]">
-                        <h5 className="font-jose font-bold text-[18px] text-[#151875]">{item.title}</h5>
+                    <div className="text-center lg:mt-[18px] mt-[10px]">
+                        <h5 className="font-jose font-bold lg:text-[18px] text-[14px] text-[#151875]">{item.title}</h5>
                         <div className="flex justify-center items-center">
                             <GoDotFill className="text-[#DE9034]" />
                             <GoDotFill className="text-[#EC42A2]" />
                             <GoDotFill className="text-[#8568FF]" />
                         </div>
                         <div className="flex items-center justify-center">
-                            <p className="font-jose font-normal text-[14px] text-[#151875] pr-3">${item.price}</p>
-                            <p className="font-jose font-normal text-[14px] text-[#FB2448] line-through">${item.price}</p>
+                            <p className="font-jose font-normal lg:text-[14px] text-[12px] text-[#151875] pr-3">${item.price}</p>
+                            <p className="font-jose font-normal lg:text-[14px] text-[12px] text-[#FB2448] line-through">${item.price}</p>
                         </div>
                     </div>
                 </div>

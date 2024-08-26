@@ -8,7 +8,6 @@ import { ApiData } from './apilinks/ContextApi';
 import Postt from './pagination/Postt';
 import PaginationArea from './pagination/PaginationArea';
 import { Link } from 'react-router-dom';
-import Bal from './pagination/Bal';
 
 const ShopGrid = () => {  
     let [categoryFilter, setCategoryFilter] = useState([])
@@ -73,25 +72,25 @@ let handleSortBy =(e)=>{
 
     return (
         <div className="">
-            <div className="bg-[#F6F5FF] pt-[96px] pb-[126px]">
+            <div className="bg-[#F6F5FF] lg:pt-[96px] lg:py-0 py-[40px] lg:pb-[126px]">
                 <Container>
-                    <div className="">
-                        <h2 className='text-[36px] text-[#101750] font-josefin font-bold'>Shop Grid Default</h2>
+                    <div className="lg:mx-0 mx-[15px]">
+                        <h2 className='lg:text-[36px] text-[30px] text-[#101750] font-josefin font-bold'>Shop Grid Default</h2>
                     </div>
-                    <div className="">
-                        <p className='text-[16px] text-[#000000] font-lato font-medium '>Home . Pages . <span className='text-[#FB2E86]'>Shop Grid Default</span></p>
+                    <div className="lg:mx-0 mx-[15px]">
+                        <p className='lg:text-[16px] text-[14px] text-[#000000] font-lato font-medium '>Home . Pages . <span className='text-[#FB2E86]'>Shop Grid Default</span></p>
                     </div>
                 </Container>
             </div>
             <Container>
 
-                <div className=" pt-[124px] pb-[144px]">
-                    <div className="flex justify-between items-center">
-                        <div className="w-[30%]">
+                <div className=" pt-[124px] pb-[144px] lg:mx-0 mx-[15px]">
+                    <div className="lg:flex justify-between items-center">
+                        <div className="lg:w-[30%]">
                             <h4 className="font-jose font-bold text-[22px] text-[#151875]">Ecommerce Acceories & Fashion item </h4>
                             <p className="font-lato font-normal text-[12px] text-[#8A8FB9]">About 9,620 results (0.62 seconds)</p>
                         </div>
-                        <div className="w-[40%] flex justify-around items-center">
+                        <div className="lg:w-[40%] flex justify-around items-center lg:pt-0 pt-[20px]">
                             <div className="flex items-center">
                                 <p className="font-lato font-normal text-[16px] text-[#3F509E] pr-2">Per Page:</p>
                                 <div className="border-[1px] border-[#E7E6EF] h-[25px] w-[55px]"></div>
@@ -114,32 +113,32 @@ let handleSortBy =(e)=>{
                         </div>
                     </div>
                 </div>
-                <div className="flex justify-between">
-                    <div className="w-[20%]">
+                <div className="flex justify-between lg:mx-0 mx-[15px]">
+                    <div className="lg:w-[20%] w-[40%]">
                         <div className="">
-                            <h4 className="font-jose font-bold text-[20px] text-[#151875] underline decoration-[#000] decoration-2 underline-offset-[5px]">Product Brand</h4>
+                            <h4 className="font-josefin font-bold lg:text-[20px] text-[17px] text-[#151875] underline decoration-[#000] decoration-2 underline-offset-[5px]">Product Brand</h4>
                             <ul>
-                                <li className="font-lato font-normal text-[16px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#E5E0FC] bg-[#E5E0FC] checked:bg-[#603EFF]" />Coaster Furniture</li>
-                                <li className="font-lato font-normal text-[16px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#E5E0FC] bg-[#E5E0FC] checked:bg-[#603EFF]" />Fusion Dot High Fashion</li>
-                                <li className="font-lato font-normal text-[16px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#E5E0FC] bg-[#E5E0FC] checked:bg-[#603EFF]" />Unique Furnitture Restor</li>
-                                <li className="font-lato font-normal text-[16px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#E5E0FC] bg-[#E5E0FC] checked:bg-[#603EFF]" />Dream Furnitture Flipping</li>
-                                <li className="font-lato font-normal text-[16px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#E5E0FC] bg-[#E5E0FC] checked:bg-[#603EFF]" />Young Repurposed</li>
-                                <li className="font-lato font-normal text-[16px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#E5E0FC] bg-[#E5E0FC] checked:bg-[#603EFF]" />Green DIY furniture</li>
+                                <li className="font-lato font-normal lg:text-[16px] text-[12px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px]  border-[#E5E0FC] bg-[#E5E0FC] checked:bg-[#603EFF]" />Coaster Furniture</li>
+                                <li className="font-lato font-normal lg:text-[16px] text-[12px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#E5E0FC] bg-[#E5E0FC] checked:bg-[#603EFF]" />Fusion Dot High Fashion</li>
+                                <li className="font-lato font-normal lg:text-[16px] text-[12px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#E5E0FC] bg-[#E5E0FC] checked:bg-[#603EFF]" />Unique Furnitture Restor</li>
+                                <li className="font-lato font-normal lg:text-[16px] text-[12px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#E5E0FC] bg-[#E5E0FC] checked:bg-[#603EFF]" />Dream Furnitture Flipping</li>
+                                <li className="font-lato font-normal lg:text-[16px] text-[12px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#E5E0FC] bg-[#E5E0FC] checked:bg-[#603EFF]" />Young Repurposed</li>
+                                <li className="font-lato font-normal lg:text-[16px] text-[12px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#E5E0FC] bg-[#E5E0FC] checked:bg-[#603EFF]" />Green DIY furniture</li>
                             </ul>
                         </div>
                         <div className="my-8">
-                            <h4 className="font-jose font-bold text-[20px] text-[#151875] underline decoration-[#000] decoration-2 underline-offset-[5px]">Discount Offer</h4>
+                            <h4 className="font-jose font-bold lg:text-[20px] text-[17px] text-[#151875] underline decoration-[#000] decoration-2 underline-offset-[5px]">Discount Offer</h4>
                             <ul>
-                                <li className="font-lato font-normal text-[16px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFDBF1] bg-[#FFDBF1] checked:bg-[#FF3EB2]" />20% Cashback</li>
-                                <li className="font-lato font-normal text-[16px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFDBF1] bg-[#FFDBF1] checked:bg-[#FF3EB2]" />5% Cashback Offer</li>
-                                <li className="font-lato font-normal text-[16px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFDBF1] bg-[#FFDBF1] checked:bg-[#FF3EB2]" />25% Discount Offer</li>
+                                <li className="font-lato font-normal lg:text-[16px] text-[12px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFDBF1] bg-[#FFDBF1] checked:bg-[#FF3EB2]" />20% Cashback</li>
+                                <li className="font-lato font-normal lg:text-[16px] text-[12px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFDBF1] bg-[#FFDBF1] checked:bg-[#FF3EB2]" />5% Cashback Offer</li>
+                                <li className="font-lato font-normal lg:text-[16px] text-[12px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFDBF1] bg-[#FFDBF1] checked:bg-[#FF3EB2]" />25% Discount Offer</li>
 
                             </ul>
                         </div>
                         <div className="">
-                            <h4 className="font-jose font-bold text-[20px] text-[#151875] underline decoration-[#000] decoration-2 underline-offset-[5px]">Rating Item</h4>
+                            <h4 className="font-jose font-bold lg:text-[20px] text-[17px] text-[#151875] underline decoration-[#000] decoration-2 underline-offset-[5px]">Rating Item</h4>
                             <ul>
-                                <li className="font-lato font-normal text-[16px] text-[#7E81A2] my-2 flex"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFF6DA] bg-[#FFF6DA] checked:bg-[#FFCC2E]" />
+                                <li className="font-lato font-normal lg:text-[16px] text-[12px] text-[#7E81A2] my-2 flex"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFF6DA] bg-[#FFF6DA] checked:bg-[#FFCC2E]" />
                                     <span className="flex items-center">
                                         <FaStar className="mx-1 text-[#FFCC2E]" />
                                         <FaStar className="mx-1 text-[#FFCC2E]" />
@@ -148,7 +147,7 @@ let handleSortBy =(e)=>{
                                         <FaStar className="mx-1 text-[#FFCC2E]" />
                                     </span>
                                 </li>
-                                <li className="font-lato font-normal text-[16px] text-[#7E81A2] my-2 flex"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFF6DA] bg-[#FFF6DA] checked:bg-[#FFCC2E]" />
+                                <li className="font-lato font-normal lg:text-[16px] text-[12px] text-[#7E81A2] my-2 flex"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFF6DA] bg-[#FFF6DA] checked:bg-[#FFCC2E]" />
                                     <span className="flex items-center">
                                         <FaStar className="mx-1 text-[#FFCC2E]" />
                                         <FaStar className="mx-1 text-[#FFCC2E]" />
@@ -157,7 +156,7 @@ let handleSortBy =(e)=>{
                                         <FaStar className="mx-1 text-[#FFCC2E]" />
                                     </span>
                                 </li>
-                                <li className="font-lato font-normal text-[16px] text-[#7E81A2] my-2 flex"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFF6DA] bg-[#FFF6DA] checked:bg-[#FFCC2E]" />
+                                <li className="font-lato font-normal lg:text-[16px] text-[12px] text-[#7E81A2] my-2 flex"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFF6DA] bg-[#FFF6DA] checked:bg-[#FFCC2E]" />
                                     <span className="flex items-center">
                                         <FaStar className="mx-1 text-[#FFCC2E]" />
                                         <FaStar className="mx-1 text-[#FFCC2E]" />
@@ -166,7 +165,7 @@ let handleSortBy =(e)=>{
                                         <FaStar className="mx-1 text-[#FFCC2E]" />
                                     </span>
                                 </li>
-                                <li className="font-lato font-normal text-[16px] text-[#7E81A2] my-2 flex"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFF6DA] bg-[#FFF6DA] checked:bg-[#FFCC2E]" />
+                                <li className="font-lato font-normal lg:text-[16px] text-[12px] text-[#7E81A2] my-2 flex"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFF6DA] bg-[#FFF6DA] checked:bg-[#FFCC2E]" />
                                     <span className="flex items-center">
                                         <FaStar className="mx-1 text-[#FFCC2E]" />
                                         <FaStar className="mx-1 text-[#FFCC2E]" />
@@ -177,27 +176,27 @@ let handleSortBy =(e)=>{
                                 </li>
                             </ul>
                         </div>
-                        <div className="">
+                        <div className="lg:mt-0 mt-[20px]">
                             <h4 className="font-josefin font-bold text-[20px] text-[#151875] underline decoration-[#000] decoration-2 underline-offset-[5px]">Categories</h4>
 
                             <ul>
                                 {category.map((item) => (
-                                    <li onClick={() => handelCategory(item)} className='ml-[10px] flex items-center uppercase justify-between text-[14px] text-[#767676] py-[10px] cursor-pointer'>{item}</li>
+                                    <li onClick={() => handelCategory(item)} className='ml-[10px] flex items-center uppercase justify-between lg:text-[14px] text-[12px] text-[#767676] lg:py-[8px] py-[4px] cursor-pointer'>{item}</li>
                                 ))}
                             </ul>
                                 
                         </div>
 
-                        <div className="">
-                            <h4 className="font-jose font-bold text-[20px] text-[#151875] underline decoration-[#000] decoration-2 underline-offset-[5px]">Price Filter</h4>
+                        <div className="lg:mt-0 mt-[20px]">
+                            <h4 className="font-jose font-bold lg:text-[20px] text-[17px] text-[#151875] underline decoration-[#000] decoration-2 underline-offset-[5px]">Price Filter</h4>
                             <ul>
-                                <li  onClick={()=>handleOneToTen({low:0, high:10})} className="font-lato font-normal text-[16px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFDBF1] bg-[#FFDBF1] checked:bg-[#FF3EB2] cursor-pointer" />$0.00 - $9.99</li>
-                                <li  onClick={()=>handleOneToTen({low:10, high:20})} className="font-lato font-normal text-[16px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFDBF1] bg-[#FFDBF1] checked:bg-[#FF3EB2] cursor-pointer" />$10.00 - $19.99</li>
-                                <li  onClick={()=>handleOneToTen({low:20, high:30})} className="font-lato font-normal text-[16px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFDBF1] bg-[#FFDBF1] checked:bg-[#FF3EB2] cursor-pointer" />$20.00 - $29.99</li>
+                                <li  onClick={()=>handleOneToTen({low:0, high:10})} className="font-lato font-normal lg:text-[16px] text-[12px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFDBF1] bg-[#FFDBF1] checked:bg-[#FF3EB2] cursor-pointer" />$0.00 - $9.99</li>
+                                <li  onClick={()=>handleOneToTen({low:10, high:20})} className="font-lato font-normal lg:text-[16px] text-[12px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFDBF1] bg-[#FFDBF1] checked:bg-[#FF3EB2] cursor-pointer" />$10.00 - $19.99</li>
+                                <li  onClick={()=>handleOneToTen({low:20, high:30})} className="font-lato font-normal lg:text-[16px] text-[12px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFDBF1] bg-[#FFDBF1] checked:bg-[#FF3EB2] cursor-pointer" />$20.00 - $29.99</li>
                             </ul>
                         </div>
-                        <div className="w-[70%] mt-8">
-                            <h4 className="font-jose font-bold text-[20px] text-[#151875] underline decoration-[#000] decoration-2 underline-offset-[5px]">Filter By Color</h4>
+                        <div className="lg:w-[70%] lg:mt-8 mt-[20px]"  >
+                            <h4 className="font-jose font-bold lg:text-[20px] text-[17px] text-[#151875] underline decoration-[#000] decoration-2 underline-offset-[5px]">Filter By Color</h4>
                             <div className="flex flex-wrap">
                                 <div className="flex items-center">
                                     <GoDotFill className="text-[#5E37FF]" />
@@ -228,10 +227,10 @@ let handleSortBy =(e)=>{
                     </div>     
 
 
-                    <div className="w-[75%]">
-                        {/* <Bal Allpage={Allpage} categoryFilter={categoryFilter} priceDispay={priceDispay}/> */}
+                    <div className="lg:w-[75%] w-[50%]">
+                        
                     <Postt Allpage={Allpage} categoryFilter={categoryFilter} priceDispay={priceDispay} />   
-                        <div className="text-center pt-[50px]">
+                        <div className="text-center lg:pt-[50px] pt-[10px]">
                         <PaginationArea pageNumber={pageNumber} paginate={paginate} pageStart={pageStart} next={next} prev={prev}/>
                         </div>
                     </div>

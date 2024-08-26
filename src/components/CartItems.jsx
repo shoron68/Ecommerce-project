@@ -30,20 +30,20 @@ const CartItems = () => {
   return (
     <div className=' py-[40px]'>
             <Container>
-                <div className=" flex justify-between">
-                    <div className="w-[68%]">
+                <div className=" lg:flex justify-between lg:mx-0 mx-[15px]">
+                    <div className="lg:w-[68%] w-full">
                         <div className=" flex justify-between">
                             <div className="w-[40%]">
-                                <h3 className=' font-josefin font-medium text-[#1D3178] text-[20px]'>Product</h3>
+                                <h3 className=' font-josefin font-medium text-[#1D3178] lg:text-[20px] text-[16px]'>Product</h3>
+                            </div>
+                            <div className="lg:w-[20%] w-[10%]">
+                                <h3 className=' font-josefin font-medium text-[#1D3178] lg:text-[20px] text-[16px]'>Price</h3>
+                            </div>
+                            <div className="lg:w-[20%] w-[20%]">
+                                <p className=' font-josefin font-medium text-[#1D3178] lg:text-[20px] text-[16px]'>Quantity</p>
                             </div>
                             <div className="w-[20%]">
-                                <h3 className=' font-josefin font-medium text-[#1D3178] text-[20px]'>Price</h3>
-                            </div>
-                            <div className="w-[20%]">
-                                <p className=' font-josefin font-medium text-[#1D3178] text-[20px]'>Quantity</p>
-                            </div>
-                            <div className="w-[20%]">
-                                <h3 className=' font-josefin font-medium text-[#1D3178] text-[20px]'>Total</h3>
+                                <h3 className=' font-josefin font-medium text-[#1D3178] lg:text-[20px] text-[16px]'>Total</h3>
                             </div>
                         </div>
 
@@ -53,27 +53,27 @@ const CartItems = () => {
 
                             <div key={i} className=" border-b-[2px] border-[#E1E1E4] pb-[30px]">
                                 <div className=" flex justify-between items-center">
-                                    <div className="w-[40%]">
-                                        <div className="flex gap-x-[20px] py-3">
+                                    <div className="w-[40%] ">
+                                        <div className="flex lg:gap-x-[20px] py-3">
                                             <div className=" relative">
-                                                <img src={item.thumbnail} className='w-[83px] h-[87px]' alt="" />
-                                                <div onClick={()=>dispatch(productRemove(i))} className=" absolute top-[-10px] right-[-10px]">
-                                                    <RxCrossCircled className=' text-[25px] text-[#000000]' />
+                                                <img src={item.thumbnail} className='lg:w-[83px] lg:h-[87px]' alt="" />
+                                                <div onClick={()=>dispatch(productRemove(i))} className=" absolute lg:top-[-10px] top-0 right-[5px] lg:right-[-10px]">
+                                                    <RxCrossCircled className=' lg:text-[25px] text-[#000000]' />
                                                 </div>
                                             </div>
                                             <div className="">
-                                                <h5 className=' font-josefin font-medium text-[16px] text-[#000000]'>{item.title}</h5>
-                                                <h6 className=' font-josefin font-normal text-[#A1A8C1] text-[12px]'>Color Brown</h6>
-                                                <p className=' font-josefin font-normal text-[#A1A8C1] text-[12px]'>Size: XL</p>
+                                                <h5 className=' font-josefin font-medium lg:text-[16px] text-[12px] text-[#000000]'>{item.title}</h5>
+                                                <h6 className=' lg:block hidden font-josefin font-normal text-[#A1A8C1] text-[12px]'>Color Brown</h6>
+                                                <p className=' lg:block hidden font-josefin font-normal text-[#A1A8C1] text-[12px]'>Size: XL</p>
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="w-[20%]">
+                                    <div className="lg:w-[20%] w-[10%]">
                                         <div className="">
                                             <h3 className=' font-josefin font-medium text-[14px] text-[#15245E]'>{item.price}</h3>
                                         </div>
                                     </div>
-                                    <div className="w-[20%]">
+                                    <div className="lg:w-[20%] w-[20%]">
                                         <div className=" border-[1px]  w-[90px] py-3 bg-[#BEBFC2] inline-block">
                                             <div className=" flex gap-x-[20px] items-center ">
                                                 <div onClick={()=>handleDecrement(i)}  className="">
@@ -86,7 +86,7 @@ const CartItems = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="w-[20%]">
+                                    <div className="lg:w-[20%] w-[20%] lg:ml-0 ml-[10px]">
                                         <h3 className=' font-josefin font-medium text-[14px] text-[#15245E]'>{item.price * item.qun}</h3>
                                     </div>
                                 </div>
@@ -98,15 +98,15 @@ const CartItems = () => {
 
 
                         <div className=" flex justify-between py-[30px]">
-                            <button className=' border-[1px]  bg-[#FB2E86] px-4 py-3 rounded-[5px] text-white hover:bg-[#19D16F] duration-300'>
-                                <a className=' font-josefin font-medium text-[16px]'>Update Curt</a>
+                            <button className=' border-[1px]  bg-[#FB2E86] lg:px-4 lg:py-3 px-[20px] py-[10px] rounded-[5px] text-white hover:bg-[#19D16F] duration-300'>
+                                <a className=' font-josefin font-medium lg:text-[16px] text-[14px]'>Update Curt</a>
                             </button>
-                            <button className=' border-[1px]  bg-[#FB2E86] px-4 py-3 rounded-[5px] text-white hover:bg-[#19D16F] duration-300'>
+                            <button className=' border-[1px]  bg-[#FB2E86] lg:px-4 lg:py-3 px-[20px] py-[10px] rounded-[5px] text-white hover:bg-[#19D16F] duration-300'>
                                 <a className=' font-josefin font-medium text-[16px]'>Clear Curt</a>
                             </button>
                         </div>
                     </div>
-                    <div className="w-[28%]">
+                    <div className="lg:w-[28%] w-full">
                         <div className=" text-center">
                             <h3 className=' font-josefin font-semibold text-[#1D3178] text-[20px]'>Cart Totals</h3>
                         </div>
