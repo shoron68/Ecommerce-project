@@ -5,6 +5,7 @@ import blogimg1 from "../assets/blogimg1.png"
 import blogimg2 from "../assets/blogimg2.png"
 import blogimg3 from "../assets/blogimg3.png"
 import blogimg4 from "../assets/blogimg4.png"
+import { Link } from 'react-router-dom';
 
 const BlogMain = () => {
   return (
@@ -45,7 +46,7 @@ const BlogMain = () => {
                   <h3 className='font-josefin font-bold text-[#151875] text-[22px] md:text-[28px] lg:text-[35px] py-[10px]'>Mauris at orci non vulputate diam tincidunt nec.</h3>
                   <p className='font-lato font-normal text-[#8A8FB9] text-[14px] md:text-[16px] py-[10px]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit facilisis quis auctor pretium ipsum, eu rutrum. Condimentum
                     eu malesuada vitae ultrices in in neque, porta dignissim. Adipiscing purus, cursus vulputate id id dictum at.</p>
-                  <h3 className='font-lato font-semibold text-[16px] md:text-[18px] text-[#151875] py-[20px] md:py-[30px]'>Read More </h3>
+                  <Link to="/single-blog"><h3 className='font-lato font-semibold text-[16px] md:text-[18px] text-[#151875] py-[20px] md:py-[30px]'>Read More </h3></Link>
                 </div>
               ))}
             </div>

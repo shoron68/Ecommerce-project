@@ -66,7 +66,7 @@ const Menu = () => {
             <div className="lg:flex lg:justify-between items-center py-4 px-4 lg:px-0  ">
                 <div className="lg:w-[70%] w-full flex justify-between items-center ">
                     <div className="w-[10%]">
-                        <h2 className='text-[24px] lg:text-[39px] text-[#0D0E43] font-josefin font-bold'>Hekto</h2>
+                        <Link to="/"><h2 className='text-[24px] lg:text-[39px] text-[#0D0E43] font-josefin font-bold'>Hekto</h2></Link>
                     </div>
                     <div className="lg:w-[65%]">
                         <div className="">
@@ -115,7 +115,7 @@ const Menu = () => {
                         </div>
                     </div>
                     {searchFilter.length > 0 && (
-                        <div className="absolute z-10 top-[40px] w-full lg:w-[92.7%] h-[300px] overflow-y-scroll bg-white shadow-lg">
+                        <div className="absolute z-10 top-[40px] w-full lg:w-[92.7%] h-auto overflow-y-scroll bg-white shadow-lg">
                             {searchFilter.map((item, index) => (
                                 <div
                                     key={item.id}

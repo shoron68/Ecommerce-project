@@ -9,12 +9,16 @@ import "slick-carousel/slick/slick-theme.css";
 import { ApiData } from './apilinks/ContextApi';
 import { useDispatch } from 'react-redux';
 import { addToCart } from './slice/productSlice';
+import { Link } from 'react-router-dom';
 
 
 const FeatureProduct = () => {
-
  let data=useContext(ApiData)
  let dispatch =useDispatch()
+
+ let handleCart = (item)=>{
+  dispatch(addToCart({...item, qun:1}))
+}
 
 
 
@@ -79,10 +83,7 @@ const FeatureProduct = () => {
     )
     
   };
-  let handleCart =(item)=>{
-    dispatch(addToCart({...item,qun:1}))
-    
-  }
+  
 
   return (
     <Container className={`lg:py-[128px] py-[50px]`}>
@@ -99,8 +100,8 @@ const FeatureProduct = () => {
                   <img className='h-[200px] mx-auto' src={item.thumbnail} alt="" />
                 </div>
   
-                <div className="absolute opacity-0 bottom-[140px] duration-500 z-10 group-hover:opacity-100 right-[50%] translate-x-[50%] text-[12px] text-white font-josefin font-medium py-[8px] px-[13px] bg-[#08D15F] rounded-[3px]">
-                  <button>View Details</button>
+                <div className="">
+                  <Link to={`/product-details/${item.id}`}><button className='absolute opacity-0 bottom-[140px] duration-500 z-10 group-hover:opacity-100 right-[50%] translate-x-[50%] text-[12px] text-white font-josefin font-medium py-[8px] px-[13px] bg-[#08D15F] rounded-[3px]'>View Details</button></Link>
                 </div>
   
                 <div className="text-center z-50 bg-white group-hover:bg-[#2F1AC4] duration-500 ease-in-out pt-[15px] pb-[17px]">
