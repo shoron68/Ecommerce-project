@@ -126,7 +126,7 @@ const Postt = ({ Allpage,categoryFilter,multi,priceDispay }) => {
     :
     categoryFilter.length > 5 &&
     <div className="">
-        <button onClick={handleShowLess} className='h-[50px] text-[#151875] font-josefin font-normal w-[150px] border-[1px] border-[#FB2448] rounded-[5px] hover:bg-[#FB2448] hover:text-[#fff] duration-500'>Show All</button>
+        <button onClick={handleShowLess} className='h-[50px] text-[#151875] font-josefin font-normal w-[150px] border-[1px] border-[#FB2448] rounded-[5px] hover:bg-[#FB2448] hover:text-[#fff] duration-500'>Hide All</button>
     </div>
     
     }

@@ -80,7 +80,7 @@ const Menu = () => {
                                 <Link to="/pages">Pages</Link>
                             </li>
                             <li onClick={() => setActiveMenu('Products')} className={`${activeMenu === 'Products' ? 'text-[#FF2AAA] font-lato font-normal text-[16px]' : 'text-[#0D0E43] font-lato font-normal text-[16px]'}`}>
-                                <Link to="/products">Products</Link>
+                                <Link to="/faq">Faq</Link>
                             </li>
                             <li onClick={() => setActiveMenu('Blog')} className={`${activeMenu === 'Blog' ? 'text-[#FF2AAA] lg:mx-3 font-lato font-normal text-[16px]' : 'text-[#0D0E43] lg:mx-3 font-lato font-normal text-[16px]'}`}>
                                 <Link to="/blog">Blog</Link>
