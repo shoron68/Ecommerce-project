@@ -38,12 +38,12 @@ const Postt = ({ Allpage,categoryFilter,multi,priceDispay }) => {
         <>
             {priceDispay.length > 0 ?
     <div className="">
-    <div className="flex justify-between flex-wrap">
+    <div className="flex lg:justify-between justify-center flex-wrap">
     {priceDispay.map((item ,i) => (
         <div key={i} className="group my-[15px]">
         <div className="relative lg:p-[35px] p-0 bg-[#F6F7FB] group-hover:bg-[#EBF4F3] ease-in-out duration-500">
             <Link to={`/product-details/${item.id}`}>
-                <img src={item.thumbnail} alt="" className="  h-[200px] w-[200px]" />
+                <img src={item.thumbnail} alt="" className="  lg:h-[200px] lg:w-[200px] h-full w-full " />
             </Link>
             <div className="">
                 <div className="absolute bottom-[-10px] lg:left-[20px] left-[15px] opacity-0 group-hover:overflow-hidden lg:group-hover:bottom-[30px] group-hover:bottom-[10px]  group-hover:opacity-100 ease-in-out duration-700">
@@ -81,12 +81,12 @@ const Postt = ({ Allpage,categoryFilter,multi,priceDispay }) => {
             
             categoryFilter.length > 0 ? 
                 <div className="">
-                    <div className="flex justify-between flex-wrap">
+                    <div className="flex lg:justify-between justify-center flex-wrap">
                     {filterShow.map((item,i) => (
                         <div key={i} className="group my-[15px]">
                         <div className="relative lg:p-[35px] p-0 bg-[#F6F7FB] group-hover:bg-[#EBF4F3] ease-in-out duration-500">
                             <Link to={`/product-details/${item.id}`}>
-                                <img src={item.thumbnail} alt="" className="h-[200px] w-[200px]" />
+                                <img src={item.thumbnail} alt="" className="lg:h-[200px] lg:w-[200px] h-full w-full " />
                             </Link>
                             <div className="">
                                 <div className="absolute bottom-[-10px] lg:left-[20px] left-[15px] opacity-0 group-hover:overflow-hidden lg:group-hover:bottom-[30px] group-hover:bottom-[10px]  group-hover:opacity-100 ease-in-out duration-700">
@@ -132,12 +132,12 @@ const Postt = ({ Allpage,categoryFilter,multi,priceDispay }) => {
     }
                 </div>
             :
-            <div className={`${multi == "activeMulti" ? "" : "flex justify-between flex-wrap"}`}>
+            <div className={`${multi == "activeMulti" ? "" : "flex lg:justify-between justify-center flex-wrap  "}`}>
                     {Allpage.map((item,i) => (
                     <div key={i} className="group my-[15px]">
                     <div className="relative lg:p-[35px] p-0 bg-[#F6F7FB] group-hover:bg-[#EBF4F3] ease-in-out duration-500">
                         <Link to={`/product-details/${item.id}`}>
-                            <img src={item.thumbnail} alt="" className="h-[200px] w-[200px]" />
+                            <img src={item.thumbnail} alt="" className="lg:h-[200px]  lg:w-[200px] h-full w-full " />
                         </Link>
                         <div className="">
                             <div className="absolute bottom-[-10px] lg:left-[20px] left-[15px] opacity-0 group-hover:overflow-hidden lg:group-hover:bottom-[30px] group-hover:bottom-[10px]  group-hover:opacity-100 ease-in-out duration-700">

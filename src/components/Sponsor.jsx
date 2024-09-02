@@ -5,7 +5,7 @@ import Container from './Container'
 const Sponsor = () => {
   return (
     <Container>
-        <div className=" flex justify-center pt-[125px]">
+        <div className=" lg:mx-0 mx-[15px] flex justify-center pt-[125px]">
             <img src={sponsorimg} alt="" />
         </div>
     </Container>

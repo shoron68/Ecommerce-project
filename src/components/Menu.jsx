@@ -63,7 +63,7 @@ const Menu = () => {
 
     return (
         <Container>
-            <div className="lg:flex lg:justify-between items-center py-4 px-4 lg:px-0  ">
+            <div className="lg:flex lg:justify-between items-center py-4 px-4 lg:px-0 relative ">
                 <div className="lg:w-[70%] w-full flex justify-between items-center ">
                     <div className="w-[10%]">
                         <Link to="/"><h2 className='text-[24px] lg:text-[39px] text-[#0D0E43] font-josefin font-bold'>Hekto</h2></Link>
@@ -115,9 +115,9 @@ const Menu = () => {
                         </div>
                     </div>
                     {searchFilter.length > 0 && (
-                        <div className="absolute z-10 top-[40px] w-full lg:w-[92.7%] h-auto overflow-y-scroll bg-white shadow-lg">
+                        <div className="absolute z-50 top-[40px] w-full lg:w-[92.7%] max-h-[400px] overflow-y-scroll bg-white shadow-lg">
                             {searchFilter.map((item, index) => (
-                                <div
+                                <div 
                                     key={item.id}
                                     onClick={() => handleSingleP(item.id)}
                                     className={`flex justify-between h-[50px] items-center mx-2 p-2 cursor-pointer ${index === selectedIndex ? 'bg-gray-200' : ''}`}

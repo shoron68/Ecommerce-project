@@ -1,13 +1,14 @@
 import Container from './Container'
 import React, { useContext,useEffect } from 'react'
 import { GoDotFill } from "react-icons/go";
-import { FaStar, FaList } from "react-icons/fa";
 import {  IoGridSharp } from "react-icons/io5";
 import { useState } from "react";
 import { ApiData } from './apilinks/ContextApi';
 import { Link } from 'react-router-dom';
 import PostList from './pagination/PostList';
 import PaginationArea from './pagination/PaginationArea';
+import { FaStar, FaList,FaBars } from "react-icons/fa";
+import { RxCross2 } from "react-icons/rx";
 
 const ShopList = () => {
     let [categoryFilter, setCategoryFilter] = useState([])
@@ -18,6 +19,10 @@ const ShopList = () => {
     let fastpage = lastpage - perPage
     let Allpage = data.slice(fastpage , lastpage )
     let [category,setCategory]=useState([])
+    let [show, setShow] = useState(false);
+    let [priceLow, setPriceLow] = useState("")
+    let [priceHigh, setPriceHigh] = useState("")
+    let [priceDispay, setPriceDisplay] = useState([])
 
 
     
@@ -55,6 +60,16 @@ const ShopList = () => {
     let catFilter = data.filter((item)=>item.category == categoryitem)
     setCategoryFilter(catFilter)
   }
+  let handleOneToTen = (value)=>{
+    setPriceLow(value.low)
+    setPriceHigh(value.high)
+    let priceFilter = data.filter((item)=> item.price > value.low && item.price < value.high)
+    setPriceDisplay(priceFilter);
+}
+  let handleSortBy =(e)=>{
+    setPerPage(e.target.value);
+
+}
 
   
   return (
@@ -84,10 +99,11 @@ const ShopList = () => {
                             </div>
                             <div className="flex items-center">
                                 <p className="font-lato font-normal text-[16px] text-[#3F509E]">Sort By:</p>
-                                <form className=" w-[96px] lg:pl-2 items-center">
-                                    <select id="" className="border-[1px] border-[#E7E6EF] font-lato font-normal text-[#8A8FB9] text-[12px] pt-1 pb-1 ">
-                                        <option selected>Default</option>
-                                        <option>Best Match</option>
+                                <form className=" w-[96px] pl-2 items-center">
+                                    <select onChange={handleSortBy} id="" className="border-[1px] border-[#E7E6EF] font-lato font-normal text-[#8A8FB9] text-[12px] pt-1 pb-1 ">
+                                        <option selected value="6">6</option>
+                                        <option value="12">12</option>
+                                        <option value="18">18</option>
                                     </select>
                                 </form>
                             </div>
@@ -100,8 +116,13 @@ const ShopList = () => {
                     </div>
                 </div>
 
-                <div className="flex justify-between lg:mx-0 mx-[15px]">
-                    <div className="lg:w-[20%] w-[40%]">
+                <div className="flex justify-between lg:mx-0 mx-[15px] relative mt-[40px]">
+
+                <div className="lg:hidden " onClick={() => setShow(!show)}>
+                        {show ? <RxCross2 className='text-[#262626] text-[25px] absolute top-[-30px] left-0' /> : <FaBars className='text-[#262626] text-[25px] absolute top-[-30px] left-0' />}
+                    </div>
+                    
+                    <div className="w-[20%] lg:block hidden">
                         <div className="">
                             <h4 className="font-jose font-bold lg:text-[20px] text-[17px] text-[#151875] underline decoration-[#000] decoration-2 underline-offset-[5px]">Product Brand</h4>
                             <ul>
@@ -173,15 +194,14 @@ const ShopList = () => {
                                 ))}
                             </ul>
                         </div>
-                        <div className="">
-                            <h4 className="font-jose font-bold lg:text-[20px] text-[17px] text-[#151875] underline decoration-[#000] decoration-2 underline-offset-[5px]">Price Filter</h4>
-                            <ul>
-                                <li className="font-lato font-normal  lg:text-[16px] text-[12px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFDBF1] bg-[#FFDBF1] checked:bg-[#FF3EB2]" />$0.00 - $150.00</li>
-                                <li className="font-lato font-normal lg:text-[16px] text-[12px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFDBF1] bg-[#FFDBF1] checked:bg-[#FF3EB2]" />$150.00 - $350.00</li>
-                                <li className="font-lato font-normal  lg:text-[16px] text-[12px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFDBF1] bg-[#FFDBF1] checked:bg-[#FF3EB2]" />$150.00 - $504.00</li>
-                                <li className="font-lato font-normal  lg:text-[16px] text-[12px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFDBF1] bg-[#FFDBF1] checked:bg-[#FF3EB2]" />$450.00 +</li>
-                            </ul>
-                        </div>
+                        <div className="lg:mt-0 mt-[20px]">
+                        <h4 className="font-josefin font-bold lg:text-[20px] text-[17px] text-[#151875] underline decoration-[#000] decoration-2 underline-offset-[5px]">Price Filter</h4>
+                        <ul>
+                            <li  onClick={()=>handleOneToTen({low:0, high:10})} className="font-lato font-normal lg:text-[16px] text-[12px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFDBF1] bg-[#FFDBF1] checked:bg-[#FF3EB2] cursor-pointer" />$0.00 - $9.99</li>
+                            <li  onClick={()=>handleOneToTen({low:10, high:20})} className="font-lato font-normal lg:text-[16px] text-[12px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFDBF1] bg-[#FFDBF1] checked:bg-[#FF3EB2] cursor-pointer" />$10.00 - $19.99</li>
+                            <li  onClick={()=>handleOneToTen({low:20, high:30})} className="font-lato font-normal lg:text-[16px] text-[12px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFDBF1] bg-[#FFDBF1] checked:bg-[#FF3EB2] cursor-pointer" />$20.00 - $29.99</li>
+                        </ul>
+                    </div>
                         <div className="lg:w-[70%] lg:mt-8 mt-[20px]">
                             <h4 className="font-jose font-bold lg:text-[20px] text-[17px] text-[#151875] underline decoration-[#000] decoration-2 underline-offset-[5px]">Filter By Color</h4>
                             <div className="lg:flex lg:flex-wrap">
@@ -213,11 +233,127 @@ const ShopList = () => {
                         </div>
                     </div>
 
+                    {show ?
+                    <div className="w-[50%] absolute top-0 left-0 bg-[#fff] z-50 ">
+                    <div className="">
+                        <h4 className="font-jose font-bold lg:text-[20px] text-[17px] text-[#151875] underline decoration-[#000] decoration-2 underline-offset-[5px]">Product Brand</h4>
+                        <ul>
+                            <li className="font-lato font-normal lg:text-[16px] text-[12px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#E5E0FC] bg-[#E5E0FC] checked:bg-[#603EFF]" />Coaster Furniture</li>
+                            <li className="font-lato font-normal lg:text-[16px] text-[12px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#E5E0FC] bg-[#E5E0FC] checked:bg-[#603EFF]" />Fusion Dot High Fashion</li>
+                            <li className="font-lato font-normal lg:text-[16px] text-[12px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#E5E0FC] bg-[#E5E0FC] checked:bg-[#603EFF]" />Unique Furnitture Restor</li>
+                            <li className="font-lato font-normal lg:text-[16px] text-[12px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#E5E0FC] bg-[#E5E0FC] checked:bg-[#603EFF]" />Dream Furnitture Flipping</li>
+                            <li className="font-lato font-normal lg:text-[16px] text-[12px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#E5E0FC] bg-[#E5E0FC] checked:bg-[#603EFF]" />Young Repurposed</li>
+                            <li className="font-lato font-normal lg:text-[16px] text-[12px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#E5E0FC] bg-[#E5E0FC] checked:bg-[#603EFF]" />Green DIY furniture</li>
+                        </ul>
+                    </div>
+
+
+                    <div className="my-8">
+                        <h4 className="font-jose font-bold text-[20px] text-[#151875] underline decoration-[#000] decoration-2 underline-offset-[5px]">Discount Offer</h4>
+                        <ul>
+                            <li className="font-lato font-normal lg:text-[16px] text-[12px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFDBF1] bg-[#FFDBF1] checked:bg-[#FF3EB2]" />20% Cashback</li>
+                            <li className="font-lato font-normal lg:text-[16px] text-[12px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFDBF1] bg-[#FFDBF1] checked:bg-[#FF3EB2]" />5% Cashback Offer</li>
+                            <li className="font-lato font-normal lg:text-[16px] text-[12px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFDBF1] bg-[#FFDBF1] checked:bg-[#FF3EB2]" />25% Discount Offer</li>
+
+                        </ul>
+                    </div>
+                    <div className="">
+                        <h4 className="font-jose font-bold text-[20px] text-[#151875] underline decoration-[#000] decoration-2 underline-offset-[5px]">Rating Item</h4>
+                        <ul>
+                            <li className="font-lato font-normal lg:text-[16px] text-[12px] text-[#7E81A2] my-2 flex"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFF6DA] bg-[#FFF6DA] checked:bg-[#FFCC2E]" />
+                                <span className="flex items-center">
+                                    <FaStar className="mx-1 text-[#FFCC2E]" />
+                                    <FaStar className="mx-1 text-[#FFCC2E]" />
+                                    <FaStar className="mx-1 text-[#FFCC2E]" />
+                                    <FaStar className="mx-1 text-[#FFCC2E]" />
+                                    <FaStar className="mx-1 text-[#FFCC2E]" />
+                                </span>
+                            </li>
+                            <li className="font-lato font-normal lg:text-[16px] text-[12px] text-[#7E81A2] my-2 flex"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFF6DA] bg-[#FFF6DA] checked:bg-[#FFCC2E]" />
+                                <span className="flex items-center">
+                                    <FaStar className="mx-1 text-[#FFCC2E]" />
+                                    <FaStar className="mx-1 text-[#FFCC2E]" />
+                                    <FaStar className="mx-1 text-[#FFCC2E]" />
+                                    <FaStar className="mx-1 text-[#FFCC2E]" />
+                                    <FaStar className="mx-1 text-[#FFCC2E]" />
+                                </span>
+                            </li>
+                            <li className="font-lato font-normal lg:text-[16px] text-[12px] text-[#7E81A2] my-2 flex"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFF6DA] bg-[#FFF6DA] checked:bg-[#FFCC2E]" />
+                                <span className="flex items-center">
+                                    <FaStar className="mx-1 text-[#FFCC2E]" />
+                                    <FaStar className="mx-1 text-[#FFCC2E]" />
+                                    <FaStar className="mx-1 text-[#FFCC2E]" />
+                                    <FaStar className="mx-1 text-[#FFCC2E]" />
+                                    <FaStar className="mx-1 text-[#FFCC2E]" />
+                                </span>
+                            </li>
+                            <li className="font-lato font-normal lg:text-[16px] text-[12px] text-[#7E81A2] my-2 flex"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFF6DA] bg-[#FFF6DA] checked:bg-[#FFCC2E]" />
+                                <span className="flex items-center">
+                                    <FaStar className="mx-1 text-[#FFCC2E]" />
+                                    <FaStar className="mx-1 text-[#FFCC2E]" />
+                                    <FaStar className="mx-1 text-[#FFCC2E]" />
+                                    <FaStar className="mx-1 text-[#FFCC2E]" />
+                                    <FaStar className="mx-1 text-[#FFCC2E]" />
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className="my-8">
+                        <h4 className="font-jose font-bold text-[20px] text-[#151875] underline decoration-[#000] decoration-2 underline-offset-[5px]">Categories</h4>
+                        <ul>
+                            {category.map((item) => (
+                                <li onClick={() => handelCategory(item)} className='ml-[10px] flex items-center uppercase justify-between lg:text-[16px] text-[12px] text-[#767676] lg:py-[10px] py-[5px] cursor-pointer'>{item}</li>
+                            ))}
+                        </ul>
+                    </div>
+                    <div className="lg:mt-0 mt-[20px]">
+                        <h4 className="font-jose font-bold lg:text-[20px] text-[17px] text-[#151875] underline decoration-[#000] decoration-2 underline-offset-[5px]">Price Filter</h4>
+                        <ul>
+                            <li  onClick={()=>handleOneToTen({low:0, high:10})} className="font-lato font-normal lg:text-[16px] text-[12px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFDBF1] bg-[#FFDBF1] checked:bg-[#FF3EB2] cursor-pointer" />$0.00 - $9.99</li>
+                            <li  onClick={()=>handleOneToTen({low:10, high:20})} className="font-lato font-normal lg:text-[16px] text-[12px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFDBF1] bg-[#FFDBF1] checked:bg-[#FF3EB2] cursor-pointer" />$10.00 - $19.99</li>
+                            <li  onClick={()=>handleOneToTen({low:20, high:30})} className="font-lato font-normal lg:text-[16px] text-[12px] text-[#7E81A2] my-2"><input type="checkbox" name="" id="" className="mr-[10px] border-[#FFDBF1] bg-[#FFDBF1] checked:bg-[#FF3EB2] cursor-pointer" />$20.00 - $29.99</li>
+                        </ul>
+                    </div>
+                    <div className="lg:w-[70%] lg:mt-8 mt-[20px]">
+                        <h4 className="font-jose font-bold lg:text-[20px] text-[17px] text-[#151875] underline decoration-[#000] decoration-2 underline-offset-[5px]">Filter By Color</h4>
+                        <div className="lg:flex lg:flex-wrap">
+                            <div className="flex items-center">
+                                <GoDotFill className="text-[#5E37FF]" />
+                                <h6 className="font-lato font-normal text-[15px] text-[#7E81A2] mx-1">Blue</h6>
+                            </div>
+                            <div className="flex items-center">
+                                <GoDotFill className="text-[#FF9437]" />
+                                <h6 className="font-lato font-normal text-[15px] text-[#7E81A2] mx-1">Orange</h6>
+                            </div>
+                            <div className="flex items-center">
+                                <GoDotFill className="text-[#FFBF95]" />
+                                <h6 className="font-lato font-normal text-[15px] text-[#7E81A2] mx-1">Brown</h6>
+                            </div>
+                            <div className="flex items-center">
+                                <GoDotFill className="text-[#33D221]" />
+                                <h6 className="font-lato font-normal text-[15px] text-[#7E81A2] mx-1">Green</h6>
+                            </div>
+                            <div className="flex items-center">
+                                <GoDotFill className="text-[#E248FF]" />
+                                <h6 className="font-lato font-normal text-[15px] text-[#7E81A2] mx-1">Purple</h6>
+                            </div>
+                            <div className="flex items-center">
+                                <GoDotFill className="text-[#26CBFF]" />
+                                <h6 className="font-lato font-normal text-[15px] text-[#7E81A2] mx-1">Sky</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    : 
+                    
+                    ""
+                    }
+
 
 
                     <div className="lg:w-[75%] w-[60%]lg:mx-0 mx-[15px] ">
                     
-                   <PostList Allpage={Allpage} categoryFilter={categoryFilter}/>
+                   <PostList Allpage={Allpage} categoryFilter={categoryFilter} priceDispay={priceDispay}/>
                    <div className="text-center lg:pt-[50px] pt-[20px]">
                         <PaginationArea pageNumber={pageNumber} paginate={paginate} pageStart={pageStart} next={next} prev={prev}/>
                         </div>
